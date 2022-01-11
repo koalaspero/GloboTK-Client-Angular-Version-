@@ -8,8 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'sitioAngular';
 
-  /*ngOnInit() {
-    $('body').addClass('df');
-  }*/
+
 }
 

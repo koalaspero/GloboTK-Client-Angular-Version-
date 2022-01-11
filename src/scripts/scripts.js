@@ -23,28 +23,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 })
 
-function initialize() {
-    var earth = new WE.map('earth_div');
-    WE.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(earth);
-
-    fetch("data/countries.json")
-    .then(response => response.json())
-    .then(data => {
-        for(let i = 0; i < Object.keys(data).length ; i++){
-            let htmLine = "<b>"+ data[i]['name'] + "</b><br>Artistas más escuchados<br><a href='https://spotifycharts.com/regional/"+ data[i]['country'].toLowerCase()+"/daily/latest'>click here</a>";
-            let latitude = data[i]['latitude'];
-            let longitude = data[i]['longitude'];
-            var marker = WE.marker([latitude, longitude]).addTo(earth);
-            marker.bindPopup(htmLine, {maxWidth: 120, closeButton: true});
-        }
-    })
-    .catch(console.error);
-
-    var markerCustom = WE.marker([50, -9], '/img/logo-webglearth-white-100.png', 100, 24).addTo(earth);
-
-    earth.setView([-1.6, -78], 3.5);
-}
-
 
 const peticion = (url) => {
    let proxy = 'https://damp-beach-17296.herokuapp.com/'
@@ -122,18 +100,3 @@ const peticion = (url) => {
    .catch(console.error)
  }
 
-function initMap() {
-	var map = L.map('map').setView([-2.1449, -79.9676], 15);
-
-	var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
-    osm.addTo(map);
-
-	L.marker([-2.1449, -79.9676]).addTo(map)
-		.bindPopup('FIEC ESPOL')
-		.openPopup();
-	
-  
-	L.control.locate().addTo(map);
-}

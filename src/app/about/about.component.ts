@@ -57,8 +57,8 @@ export class AboutComponent implements OnInit {
           shadowUrl: 'https://res.cloudinary.com/rodrigokamada/image/upload/v1637581626/Blog/angular-leaflet/marker-shadow.png',
           popupAnchor: [13, 0],
         });
-  
-        const marker = L.marker([position.latitude, position.longitude], { icon }).bindPopup('Angular Leaflet');
+        
+        const marker = L.marker([position.latitude, position.longitude], { icon }).bindPopup('Tú');
         marker.addTo(map);
       });  
     

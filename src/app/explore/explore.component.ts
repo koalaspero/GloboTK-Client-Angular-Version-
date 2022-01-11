@@ -24,7 +24,7 @@ export class ExploreComponent implements OnInit {
             let latitude = this.countryList[i].latitude;
             let longitude = this.countryList[i].longitude;
             var marker = WE.marker([latitude, longitude]).addTo(earth);
-            marker.bindPopup(htmLine, {maxWidth: 120, closeButton: true});
+            marker.bindPopup(htmLine, {maxWidth: 120, closePopupOnClick: true, closeButton:false});
     }
     
 
