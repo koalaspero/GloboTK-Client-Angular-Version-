@@ -42,7 +42,7 @@
               "src/scripts/scripts.js",
               "node_modules/@fortawesome/fontawesome-free/js/all.js",
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/webglearth2_npm_package/src/api.js",
+              "src/scripts/webgl.js",
               "src/scripts/form.js",
               "node_modules/leaflet/dist/leaflet.js"
             ]
