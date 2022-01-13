@@ -1,0 +1,11 @@
+
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url("https://s1.1zoom.me/big3/850/Sunrises_and_sunsets_461220.jpg");
+  background-size: cover;
+  background-position: center center;
+}
