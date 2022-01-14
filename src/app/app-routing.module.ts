@@ -5,6 +5,7 @@ import { ContactoComponent } from "./contacto/contacto.component";
 import { ExploreComponent } from "./explore/explore.component";
 import { HomeComponent } from "./home/home.component";
 import { NewsComponent } from "./news/news.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
     { path: 'contact/about', redirectTo: '/about', pathMatch: 'full' },
     { path: 'contact/explore', redirectTo: '/explore', pathMatch: 'full' },
     { path: 'contact/contact', redirectTo: '/contact', pathMatch: 'full' },
+	{ path: 'dashboard', component: DashboardComponent },
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
