@@ -18,15 +18,15 @@
                               <div class="col-lg-10 col-xl-7 mx-auto">
                                   <h3 class="display-4">GloboTK: Inicio de sesión</h3>
                                   <p class="text-muted mb-4"></p>
-                                  <form ngNoForm method="post" action="http://localhost:3001/users/:idCorreo">
+                                  <form ngNoForm method="post" action="http://localhost:3001/users/validate">
             
                                     <div class="form-group mb-3">
                                           <label class="form-label" for="inputEmail">Correo Electrónico</label>
-                                          <input id="inputEmail" type="email" placeholder="Ingrese su correo electrónico" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                          <input id="inputEmail" type="email" placeholder="Ingrese su correo electrónico" name="user" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
                                       </div>
                                       <div class="form-group mb-3">
                                           <label class="form-label" for="inputPassword">Contraseña</label>
-                                          <input id="inputPassword" type="password" placeholder="Ingrese su contraseña" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                          <input id="inputPassword" type="password" placeholder="Ingrese su contraseña" name="password" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
                                       </div>
                                       
                             
