@@ -23,6 +23,22 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 })
 
+async function cerrarSesion(){
+
+	try{
+		const response = await fetch('http://localhost:3001/users/endSession', {
+			method: "put"
+		})
+
+		if (!response.ok) {
+			const message = 'Error with Status Code: ' + response.status;
+			throw new Error(message);
+    }
+
+	}catch (error) {
+		console.log('Error: ' + error);
+	}
+}
 
 const peticion = (url) => {
    let proxy = 'https://damp-beach-17296.herokuapp.com/'
