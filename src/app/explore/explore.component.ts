@@ -20,7 +20,12 @@ export class ExploreComponent implements OnInit {
     WE.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(earth);
 
     for(let i = 0; i < this.countryList.length ; i++){
-            let htmLine = "<b>"+ this.countryList[i].name + "</b><br>Artistas más escuchados<br><a href='https://spotifycharts.com/regional/"+ this.countryList[i].country.toLowerCase()+"/daily/latest'>click here</a>";
+            let enlacePais = 'https://spotifycharts.com/regional/'+ this.countryList[i].country.toLowerCase()+'/daily/latest';
+            const custom = {
+              enlace: enlacePais,
+              pais: this.countryList[i].name
+            }
+            let htmLine = "<b>"+ this.countryList[i].name + "</b><br>Artistas más escuchados<br><a "+ "href="+enlacePais+">click here</a>";
             let latitude = this.countryList[i].latitude;
             let longitude = this.countryList[i].longitude;
             var marker = WE.marker([latitude, longitude]).addTo(earth);

@@ -26,6 +26,7 @@ const routes: Routes = [
     { path: 'explore/news', redirectTo: '/news', pathMatch: 'full' },
     { path: 'explore/about', redirectTo: '/about', pathMatch: 'full' },
     { path: 'explore/contact', redirectTo: '/contact', pathMatch: 'full' },
+    { path: 'explore/explore', redirectTo: '/explore', pathMatch: 'full' },
     { path: 'news/home', redirectTo: '/home', pathMatch: 'full' },
     { path: 'news/about', redirectTo: '/about', pathMatch: 'full' },
     { path: 'news/explore', redirectTo: '/explore', pathMatch: 'full' },
