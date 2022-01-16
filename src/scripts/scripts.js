@@ -26,19 +26,20 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 
-var galleta = document.cookie.split("=")[1];
-galleta = galleta.replace("%40","@");
-var ruta = "http://localhost:3001/session/"+galleta;
 
 
-function getLastSesion(objeto){
+
+function getLastSesion(){
+  var galleta = document.cookie.split("=")[1];
+  galleta = galleta.replace("%40","@");
+  var ruta = "http://localhost:3001/session/"+galleta;
 
   fetch(ruta)
 	.then(texto => texto.json())
 	.then(sesion => {
 
     let idSes = sesion[0].id;
-    countrySession(objeto.enlace,objeto.pais,idSes);
+    countrySession(enlace,pais,idSes);
   })
 }
 
