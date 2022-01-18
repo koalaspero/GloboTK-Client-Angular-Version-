@@ -1,9 +1,10 @@
 window.addEventListener('DOMContentLoaded', () => {
-    let scrollPos = 0;
-    const mainNav = document.getElementById('mainNav');
-    const headerHeight = mainNav.clientHeight;
-    console.log(document.cookie);
-    window.addEventListener('scroll', function() {
+    if(!(document.URL.includes("dashboard") || document.URL.includes("register"))){
+      let scrollPos = 0;
+      const mainNav = document.getElementById('mainNav');
+      const headerHeight = mainNav.clientHeight;
+      console.log(document.cookie);
+      window.addEventListener('scroll', function() {
         const currentTop = document.body.getBoundingClientRect().top * -1;
         if ( currentTop < scrollPos) {
             // Scrolling Up
@@ -21,66 +22,12 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
         scrollPos = currentTop;
-    });
+      });
+    }
+    
 
 })
 
-
-
-
-
-function getLastSesion(){
-  var galleta = document.cookie.split("=")[1];
-  galleta = galleta.replace("%40","@");
-  var ruta = "http://localhost:3001/session/"+galleta;
-
-  fetch(ruta)
-	.then(texto => texto.json())
-	.then(sesion => {
-
-    let idSes = sesion[0].id;
-    countrySession(enlace,pais,idSes);
-  })
-}
-
-function countrySession(enlace,pais,id){
-
-  var today = new Date();
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date+' '+time;
-
-  let sesionPais = {
-		pais: pais,
-		enlacePais: enlace,
-		fecha: dateTime,
-		idSesion: id
-	}
-
-  try{
-		const response = fetch('http://localhost:3001/session/country', {
-			method: "post",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(sesionPais)
-		})
-
-		if (!response.ok) {
-			const message = 'Error with Status Code: ' + response.status;
-			throw new Error(message);
-		  }
-		
-		  const data =  response.json();
-		  console.log(data);
-
-	}catch (error) {
-		console.log('Error: ' + error);
-	}finally{
-		location.reload();
-	}
-  
-}
 
 const peticion = (url) => {
    let proxy = 'https://damp-beach-17296.herokuapp.com/'

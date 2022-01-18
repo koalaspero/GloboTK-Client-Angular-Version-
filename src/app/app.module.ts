@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
+
 
 import { AppComponent } from './app.component';
 import { ExploreComponent } from './explore/explore.component';
@@ -39,8 +41,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
     MatInputModule,
-    BrowserAnimationsModule
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

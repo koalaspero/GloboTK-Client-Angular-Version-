@@ -30,18 +30,31 @@
 </header>
 <mat-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+      <form [formGroup]="firstFormGroup"  #formone="ngForm">
         <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
+          <mat-label>Nombre</mat-label>
           <input matInput placeholder="Apellido, Nombre" formControlName="firstCtrl" required>
+        </mat-form-field>    
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput placeholder="dd/mm/aa" formControlName="birthCtrl" required>
+        </mat-form-field>
+        <br>     
+        <mat-form-field>
+          <mat-select placeholder="Pais" formControlName="countCtrl">
+            <mat-option>Selecciona</mat-option>
+            <mat-option *ngFor="let pais of countryList" [value]="pais.name">{{pais.name}}</mat-option>
+          </mat-select>
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
+      
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+      <form [formGroup]="secondFormGroup" (ngSubmit)="mandaMail()" #formtwo="ngForm">
         <mat-form-field appearance="fill">
           <mat-label>Correo Electronico</mat-label>
           <input matInput formControlName="secondCtrl" placeholder="example@anymail.com"
@@ -50,7 +63,7 @@
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Mensaje</mat-label>
-            <textarea matInput formControlName="thirdCrtl"required></textarea>
+            <textarea matInput formControlName="thirdCrtl" required></textarea>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -60,7 +73,6 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Enviado</ng-template>
-      <p>Tu mensaje se ha enviado.</p>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
