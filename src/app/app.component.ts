@@ -20,6 +20,7 @@ export class AppComponent implements OnInit{
       document.title += " :: "
       document.title += galleta
     }
+
   }
 
 

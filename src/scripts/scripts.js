@@ -28,6 +28,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
 })
 
+function cerrarSesion(){
+  document.cookie = "usuario= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+  window.location.assign("http://localhost:4200/");
+}
+
 
 const peticion = (url) => {
    let proxy = 'https://damp-beach-17296.herokuapp.com/'
