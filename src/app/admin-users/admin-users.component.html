@@ -1,1 +1,145 @@
-<p>admin-users works!</p>
+    <div class="container">
+      <div class="row flex-lg-nowrap">
+        <div class="col">
+          <div class="row flex-lg-nowrap">
+            <div class="col mb-3">
+              <div class="e-panel card">
+                <div class="card-body">
+                  <div class="card-title">
+                    <h6 class="mr-2"><span>Usuarios</span></h6>
+                  </div>
+                  <div class="e-table">
+                    <div class="table-responsive table-lg mt-3">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th class="max-width">Correo</th>
+                            <th class="max-width">Nombre completo</th>
+                            <th>Celular</th>
+                            <th class="sortable">Fecha de nacimiento</th>
+                            <th>Admin</th>
+                            <th>Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody id="usuarios">
+                          
+                          
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-3 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-center px-xl-3">
+                    <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">Nuevo cliente</button>
+                  </div>
+                  <hr class="my-3">
+                  <div class="e-navlist e-navlist--active-bold">
+                    <ul class="nav">
+                      <li class="nav-item active"><a href="/" class="nav-link"><span>Todos</span>&nbsp;<small>/&nbsp;10</small></a></li>
+                      <li class="nav-item"><a href="/activos" class="nav-link"><span>Activos</span>&nbsp;<small>/&nbsp;8</small></a></li>
+                      <li class="nav-item"><a href="/inactivos" class="nav-link"><span>Inactivos</span>&nbsp;<small>/&nbsp;2</small></a></li>
+                    </ul>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- User Form Modal -->
+          <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Crear Usuario</h5>
+                  <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="py-1">
+                    <form class="form" method="post" action="http://localhost:3001//" novalidate="">
+                      <div class="row">
+                        <div class="col">
+                          
+                          <!-- Nombre y Apellido -->
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Nombre</label>
+                                <input class="form-control" type="text" name="name" placeholder="John" value="John">
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Apellido</label>
+                                <input class="form-control" type="text" name="lastname" placeholder="Smith" value="Smith">
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Correo</label>
+                                <input class="form-control" type="email" name="correo" placeholder="algo@mail.com" value="example@gmail.com">
+                              </div>
+                            </div>
+                          </div>
+                          
+                          
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          
+                          <!-- Fecha de nacimiento y estado -->
+                          <div class="row">
+
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Contrasenia</label>
+                                <input class="form-control" type="password" name="password" placeholder="" value="">
+                              </div>
+                            </div>
+                            
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Fecha de nacimiento</label>
+                                <input class="form-control" type="date" name="date">
+                              </div>
+                            </div>
+                            
+                            <!-- -->
+                            <div class="col">
+                              <label>Estado</label>`
+                              <div class="custom-controls-stacked px-2">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="notifications-blog" name="isAdmin" checked="true">
+                                  <label class="custom-control-label" for="notifications-blog">Activo</label>
+                                </div>
+                               
+                              </div>
+                            </div>
+                            <!-- -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="col d-flex justify-content-end">
+                            <button class="btn btn-primary" onclick="" type="submit">Guardar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -44,12 +44,6 @@ export class ExploreComponent implements OnInit {
             
     }
 
-    earth.onclick = function(){
-      var pops = document.getElementsByClassName("we-pp");
-      for(let i = 0; i < pops.length ; i++){
-        pops[i].setAttribute("visibility","hidden");
-      }
-    }
     //var markerCustom = WE.marker([50, -9], '/img/logo-webglearth-white-100.png', 100, 24).addTo(earth);
     earth.setView([-1.6, -78], 3.5);
 

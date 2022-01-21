@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 
 
+
 import { AppComponent } from './app.component';
 import { ExploreComponent } from './explore/explore.component';
 import { NewsComponent } from './news/news.component';
@@ -47,7 +48,7 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
