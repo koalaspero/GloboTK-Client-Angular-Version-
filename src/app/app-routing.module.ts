@@ -49,7 +49,13 @@ const routes: Routes = [
     { path: 'admNews', component: AdminNewsComponent },
     { path: 'dashboard/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'dashboard/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
-    { path: 'dashboard/admNews', redirectTo: '/admNews',pathMatch: 'full' }
+    { path: 'dashboard/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+	{ path: 'admUsers/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
+    { path: 'admUsers/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
+    { path: 'admUsers/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+	{ path: 'admNews/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
+    { path: 'admNews/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
+    { path: 'admNews/admNews', redirectTo: '/admNews',pathMatch: 'full' }
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

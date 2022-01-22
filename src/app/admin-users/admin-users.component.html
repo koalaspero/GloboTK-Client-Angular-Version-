@@ -1,14 +1,83 @@
-    <div class="container">
-      <div class="row flex-lg-nowrap">
-        <div class="col">
-          <div class="row flex-lg-nowrap">
-            <div class="col mb-3">
-              <div class="e-panel card">
-                <div class="card-body">
-                  <div class="card-title">
-                    <h6 class="mr-2"><span>Usuarios</span></h6>
-                  </div>
-                  <div class="e-table">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="index.html">GloboTK Admin</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li class="nav-item"><button type="button" class="btn btn-light btn-circle btn-xl" onclick="cerrarSesion();"><i class="fas fa-sign-out-alt"></i></button></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Principal</div>
+                            <a class="nav-link" href="" routerLink="dashboard">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                GloboTK
+                            </a>
+                            
+                            <div class="sb-sidenav-menu-heading">Secciones</div>
+                            <a class="nav-link" href="" routerLink="dashboard">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Graficos
+                            </a>
+                            <a class="nav-link" href="" routerLink="admNews">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Noticias
+                            </a>
+							<a class="nav-link" href="" routerLink="admUsers">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Usuarios
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Usuarios</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Usuarios</li>
+                        </ol>
+						<div class="row">
+						
+						  <div class="card mb-4">
+							<div class="card-body">
+							  <div class="text-center px-xl-3">
+								<button mat-raised-button class="btn btn-success btn-block" color="primary" (click)="openDialog()">Nuevo cliente</button>
+							  </div>
+							  <hr class="my-3">
+							  <div class="e-navlist e-navlist--active-bold">
+								<ul class="nav">
+								  <li class="nav-item active"><a href="/" class="nav-link"><span>Todos</span>&nbsp;<small>/&nbsp;10</small></a></li>
+								  <li class="nav-item"><a href="/activos" class="nav-link"><span>Activos</span>&nbsp;<small>/&nbsp;8</small></a></li>
+								  <li class="nav-item"><a href="/inactivos" class="nav-link"><span>Inactivos</span>&nbsp;<small>/&nbsp;2</small></a></li>
+								</ul>
+							  </div>
+							  
+							</div>
+						  </div>
+						</div>
+						<div class="col-12 col-lg-3 mb-3">
+						</div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Usuarios
+                            </div>
+							<div class="e-table">
                     <div class="table-responsive table-lg mt-3">
                       <table class="table table-bordered">
                         <thead>
@@ -27,23 +96,24 @@
                           
                         </tbody>
                       </table>
+					  <div class="clearfix">
+									<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+									<ul class="pagination">
+										<li class="page-item disabled"><a href="#">Previous</a></li>
+										<li class="page-item active"><a href="#" class="page-link">1</a></li>
+										<li class="page-item"><a href="#" class="page-link">2</a></li>
+										<li class="page-item"><a href="#" class="page-link">3</a></li>
+										<li class="page-item"><a href="#" class="page-link">4</a></li>
+										<li class="page-item"><a href="#" class="page-link">5</a></li>
+										<li class="page-item"><a href="#" class="page-link">Next</a></li>
+									</ul>
+								</div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-3 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="text-center px-xl-3">
-                    <button mat-raised-button color="primary" (click)="openDialog()">Nuevo cliente</button>
-                  </div>
-                  <hr class="my-3">
-                  
-                </div>
-              </div>
-            </div>
+				  </div>
+				  </div>
+				   </main>
+				  
+            
           </div>
-        </div>
-      </div>
     </div>
