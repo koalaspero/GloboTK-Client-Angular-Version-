@@ -32,13 +32,13 @@
               "src/styles.css",
               "node_modules/intro.js/minified/introjs.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/forms.css",
               "node_modules/leaflet/dist/leaflet.css",
               "node_modules/jquery-ui/themes/base/all.css"
             ],
             "scripts": [
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "node_modules/intro.js/minified/intro.min.js",
               "src/scripts/scripts.js",
               "node_modules/@fortawesome/fontawesome-free/js/all.js",

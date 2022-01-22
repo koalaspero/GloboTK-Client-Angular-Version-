@@ -1,3 +1,7 @@
 body {
   padding: 50px;
 }
+div.text-center > button:nth-child(1){
+  background-color: green;
+  color: #fff;
+}

@@ -36,9 +36,10 @@
           <input matInput placeholder="Apellido, Nombre" formControlName="firstCtrl" required>
         </mat-form-field>    
         <br>
-        <mat-form-field appearance="fill">
-          <mat-label>Fecha de nacimiento</mat-label>
-          <input matInput placeholder="dd/mm/aa" formControlName="birthCtrl" required>
+        <mat-form-field>
+              <input matInput [matDatepicker]="picker1" formControlName="birthCtrl" placeholder="Date of birth">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
         <br>     
         <mat-form-field>

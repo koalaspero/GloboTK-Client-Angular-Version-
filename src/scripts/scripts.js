@@ -34,6 +34,21 @@ function cerrarSesion(){
 }
 
 
+function deleteRequest(correo) {
+  $.ajax( {
+  url : "http://localhost:3001/admin/users/",
+  type : 'DELETE',
+  data: jQuery.param({"Correo": correo}),
+  success : function ( data ) {
+  $( "p" ).append( "Delete request is Success." );
+  },
+  error : function ( jqXhr, textStatus, errorMessage ) {
+  $( "p" ).append( "Delete request is Fail.");
+  }
+});
+
+}
+
 const peticion = (url) => {
    let proxy = 'https://damp-beach-17296.herokuapp.com/'
    //RSS de música latina de Billboard

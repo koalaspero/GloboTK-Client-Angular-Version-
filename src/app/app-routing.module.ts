@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { AdminUsersComponent } from "./admin-users/admin-users.component";
+import { AdminNewsComponent } from "./admin-news/admin-news.component";
 
 const routes: Routes = [
     { path: '', component: LoginComponent },
@@ -45,7 +46,7 @@ const routes: Routes = [
     { path: 'contact/contact', redirectTo: '/contact', pathMatch: 'full' },
 	{ path: 'dashboard', component: DashboardComponent },
     { path: 'admUsers', component: AdminUsersComponent },
-    { path: 'admNews', component: AdminUsersComponent },
+    { path: 'admNews', component: AdminNewsComponent },
     { path: 'dashboard/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'dashboard/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
     { path: 'dashboard/admNews', redirectTo: '/admNews',pathMatch: 'full' }

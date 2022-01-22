@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list'; 
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
 
 
 
@@ -23,6 +25,11 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminNewsComponent } from './admin-news/admin-news.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,7 +44,8 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
     RegisterComponent,
     DashboardComponent,
     AdminNewsComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -49,8 +57,15 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
     BrowserAnimationsModule,
     MatInputModule,
     MatSelectModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

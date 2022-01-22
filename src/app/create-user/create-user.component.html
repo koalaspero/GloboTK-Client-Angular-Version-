@@ -1,0 +1,93 @@
+<div>
+    <div class="add-title">
+      <h2 class="primary">Crear Usuario</h2>
+    </div>
+    <div>
+      <form [formGroup]="addCusForm" (change)="formChanged()">
+        <mat-grid-list cols="2" rowHeight="85px">
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="First Name" value={{fname}} formControlName="firstname" required>
+                <mat-error *ngIf="addCusForm.controls['firstname'].hasError('required')">
+                  Por favor ingresa un nombre
+                </mat-error>
+                <mat-error *ngIf="addCusForm.controls['firstname'].hasError('pattern')">
+                  Por favor ingresa un nombre
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Last Name" value={{lname}} formControlName="lastname" required>
+                <mat-error *ngIf="addCusForm.controls['lastname'].hasError('required')">
+                  Por favor ingresa un apellido
+                </mat-error>
+                <mat-error *ngIf="addCusForm.controls['lastname'].hasError('pattern')">
+                  Por favor ingresa un apellido
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+      
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker1" dateformat="y M d" placeholder="Date of birth" formControlName="birthDate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email address" formControlName="email" required>
+                <mat-error *ngIf="addCusForm.controls['email'].hasError('required')">
+                  Por favor ingresa un email id
+                </mat-error>
+                <mat-error *ngIf="addCusForm.controls['email'].hasError('email')">
+                  Por favor ingresa un email id valido
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+        
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="contrasenia" [type]="hide ? 'password' : 'text'"  formControlName="password" required>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="addCusForm.controls['password'].hasError('required')">
+                  Por favor ingresa una contraseña
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Numero de telefono" value='' formControlName="phone" required>
+                <mat-error *ngIf="addCusForm.controls['phone'].hasError('required')">
+                  Por favor ingresa un numero
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-checkbox class="example-margin" formControlName="isAdmin">Admin</mat-checkbox>
+          </mat-grid-tile>
+          
+        </mat-grid-list>
+
+        <div class="btn-sec">
+          <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="vemos()">Guardar</button>
+          <button mat-raised-button type="button" class="Discard-btn" (click)="openDialog()">Cancelar</button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
