@@ -24,7 +24,7 @@ export class CreateUserComponent implements OnInit {
       birthDate: ['', Validators.required],
       email: [null, [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', Validators.required , Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
       isAdmin: [false]
     });
 

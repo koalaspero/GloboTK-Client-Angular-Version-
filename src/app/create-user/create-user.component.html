@@ -74,6 +74,9 @@
                 <mat-error *ngIf="addCusForm.controls['phone'].hasError('required')">
                   Por favor ingresa un numero
                 </mat-error>
+                <mat-error *ngIf="addCusForm.controls['phone'].hasError('pattern')">
+                  Por favor ingresar solo numeros
+                </mat-error>
               </mat-form-field>
             </div>
           </mat-grid-tile>
