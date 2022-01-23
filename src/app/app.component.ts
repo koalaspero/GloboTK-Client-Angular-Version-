@@ -15,10 +15,21 @@ export class AppComponent implements OnInit{
     document.title = "GloboTK"
   
     if((document.URL != "http://localhost:4200/") && (document.URL != "http://localhost:4200/register")){
-      let galleta = document.cookie.split("=")[1];
-      galleta = galleta.replace("%40","@");
+      
+      let listaCookies = document.cookie.split(";")
+      var galleta;
+      for (let cook in listaCookies) {
+        let busca = listaCookies[cook].search("usuario");
+        if (busca > -1) {
+          galleta = listaCookies[cook].split("=")[1].replace("%40", "@");
+       
+        }
+      }
       document.title += " :: "
-      document.title += galleta
+      if(galleta!= undefined){
+        document.title += " "+galleta
+      }
+     
     }
 
   }
