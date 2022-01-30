@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -62,7 +63,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatDialogModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
