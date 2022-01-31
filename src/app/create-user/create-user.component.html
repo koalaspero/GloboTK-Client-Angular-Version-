@@ -1,18 +1,20 @@
 <div>
     <div class="add-title">
+      <span>{{usuarioDB.form.controls['$key'].value?"Editar Usuario":"Crear Usuario"}}</span>
       <h2 id="title" class="primary">Usuario</h2>
     </div>
     <div>
-      <form [formGroup]="addCusForm" (change)="formChanged()">
+      <form [formGroup]="usuarioDB.form" (change)="formChanged()">
         <mat-grid-list cols="2" rowHeight="85px">
           <mat-grid-tile>
             <div class="text-inside">
+              <input type="hidden" formControlName="$key">
               <mat-form-field>
-                <input matInput id="nombre" placeholder="First Name" value={{fname}} formControlName="firstname" required>
-                <mat-error *ngIf="addCusForm.controls['firstname'].hasError('required')">
+                <input matInput id="nombre" placeholder="First Name" value="" formControlName="Nombre" required>
+                <mat-error *ngIf="usuarioDB.form.controls['Nombre'].hasError('required')">
                   Por favor ingresa un nombre
                 </mat-error>
-                <mat-error *ngIf="addCusForm.controls['firstname'].hasError('pattern')">
+                <mat-error *ngIf="usuarioDB.form.controls['Nombre'].hasError('pattern')">
                   Por favor ingresa un nombre
                 </mat-error>
               </mat-form-field>
@@ -21,11 +23,11 @@
           <mat-grid-tile>
             <div class="text-inside">
               <mat-form-field class="example-full-width">
-                <input matInput id="apellido" placeholder="Last Name" value={{lname}} formControlName="lastname" required>
-                <mat-error *ngIf="addCusForm.controls['lastname'].hasError('required')">
+                <input matInput id="apellido" placeholder="Last Name" value="" formControlName="Apellido" required>
+                <mat-error *ngIf="usuarioDB.form.controls['Apellido'].hasError('required')">
                   Por favor ingresa un apellido
                 </mat-error>
-                <mat-error *ngIf="addCusForm.controls['lastname'].hasError('pattern')">
+                <mat-error *ngIf="usuarioDB.form.controls['Apellido'].hasError('pattern')">
                   Por favor ingresa un apellido
                 </mat-error>
               </mat-form-field>
@@ -35,7 +37,7 @@
           <mat-grid-tile>
             <div class="text-inside">
               <mat-form-field>
-                <input matInput id="fecha" [matDatepicker]="picker1" dateformat="y M d" placeholder="Date of birth" formControlName="birthDate">
+                <input matInput id="fecha" [matDatepicker]="picker1" dateformat="y M d" placeholder="Date of birth" formControlName="fechaNacimiento">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
@@ -44,11 +46,11 @@
           <mat-grid-tile>
             <div class="text-inside">
               <mat-form-field class="example-full-width">
-                <input matInput id="email" placeholder="Email address" formControlName="email" required>
-                <mat-error *ngIf="addCusForm.controls['email'].hasError('required')">
+                <input matInput id="email" placeholder="Email address" formControlName="Correo" required>
+                <mat-error *ngIf="usuarioDB.form.controls['Correo'].hasError('required')">
                   Por favor ingresa un email id
                 </mat-error>
-                <mat-error *ngIf="addCusForm.controls['email'].hasError('email')">
+                <mat-error *ngIf="usuarioDB.form.controls['Correo'].hasError('email')">
                   Por favor ingresa un email id valido
                 </mat-error>
               </mat-form-field>
@@ -58,9 +60,9 @@
           <mat-grid-tile>
             <div class="text-inside">
               <mat-form-field class="example-full-width">
-                <input matInput id="password" placeholder="contrasenia" [type]="hide ? 'password' : 'text'"  formControlName="password" required>
+                <input matInput id="password" placeholder="contrasenia" [type]="hide ? 'password' : 'text'"  formControlName="Contrasenia" required>
                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                <mat-error *ngIf="addCusForm.controls['password'].hasError('required')">
+                <mat-error *ngIf="usuarioDB.form.controls['Contrasenia'].hasError('required')">
                   Por favor ingresa una contraseña
                 </mat-error>
               </mat-form-field>
@@ -70,12 +72,9 @@
           <mat-grid-tile>
             <div class="text-inside">
               <mat-form-field class="example-full-width">
-                <input matInput id="numero" placeholder="Numero de telefono" value='' formControlName="phone" required>
-                <mat-error *ngIf="addCusForm.controls['phone'].hasError('required')">
+                <input matInput id="numero" placeholder="Numero de telefono" value='' formControlName="celular" required>
+                <mat-error *ngIf="usuarioDB.form.controls['celular'].hasError('required')">
                   Por favor ingresa un numero
-                </mat-error>
-                <mat-error *ngIf="addCusForm.controls['phone'].hasError('pattern')">
-                  Por favor ingresar solo numeros
                 </mat-error>
               </mat-form-field>
             </div>
@@ -87,8 +86,8 @@
         </mat-grid-list>
 
         <div class="btn-sec">
-          <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="vemos()">Guardar</button>
-          <button mat-raised-button type="button" class="Discard-btn" (click)="openDialog()">Cancelar</button>
+          <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="onSubmit()" [disabled]="usuarioDB.form.invalid">Guardar</button>
+          <button mat-raised-button type="button" class="Discard-btn" (click)="onClear()">Cancelar</button>
         </div>
   
       </form>

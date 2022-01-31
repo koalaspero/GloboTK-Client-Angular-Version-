@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog'; 
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { UsuarioDBService } from '../usuario-db.service';
 
 
 @Component({
@@ -10,51 +11,93 @@ import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 })
 export class CreateUserComponent implements OnInit {
    // Breakpoint observer code
-  public fname: string = `Ramesh`;
-  public lname: string = `Suresh`;
-  public addCusForm: FormGroup;
   hide = true;
   wasFormChanged = false;
   
 
-  constructor(private fb: FormBuilder,public dialog: MatDialog) { 
-    this.addCusForm= this.fb.group({
-      firstname: [this.fname, [Validators.required, Validators.pattern('[a-zA-Z]+([a-zA-Z ]+)*')]],
-      lastname: [this.lname, [Validators.required, Validators.pattern('[a-zA-Z]+([a-zA-Z ]+)*')]],
-      birthDate: ['', Validators.required],
-      email: [null, [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      phone: ['', Validators.required , Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
-      isAdmin: [false]
-    });
+  constructor(public dialog: MatDialog, public usuarioDB: UsuarioDBService) { 
 
   }
 
   ngOnInit(): void {
-
   }
 
-  openDialog(): void {
-      this.dialog.closeAll();
+  onClear() {
+    this.usuarioDB.form.reset();
+    this.usuarioDB.initializeFormGroup();
   }
 
+  onSubmit() {
+    if (this.usuarioDB.form.valid) {
+      if (!this.usuarioDB.form.value.$key)
+        this.crearUsuario();
+      else
+        this.editarUsuario();
+      this.usuarioDB.form.reset();
+      this.usuarioDB.initializeFormGroup();
+      this.onClose();
+    }
+  }
 
-  vemos():void{
-    console.log(this.addCusForm.value.lastname);
+  onClose() {
+    this.usuarioDB.form.reset();
+    this.usuarioDB.initializeFormGroup();
+    this.dialog.closeAll();
+  }
+
+  async editarUsuario(){
 
     let user = {
-      Correo: this.addCusForm.value.email,
-      Nombre: this.addCusForm.value.firstname, 
-      Apellido: this.addCusForm.value.lastname,
-      Contrasenia: this.addCusForm.value.password,
-      celular: this.addCusForm.value.phone,
-      fechaNacimiento: this.addCusForm.value.birthDate,
-      isAdmin:this.addCusForm.value.isAdmin
+      Correo: this.usuarioDB.form.value.Correo,
+      Nombre: this.usuarioDB.form.value.Nombre, 
+      Apellido: this.usuarioDB.form.value.Apellido,
+      Contrasenia: this.usuarioDB.form.value.Contrasenia,
+      celular: this.usuarioDB.form.value.celular,
+      fechaNacimiento: this.usuarioDB.form.value.fechaNacimiento,
+      isAdmin:this.usuarioDB.form.value.isAdmin
+    };
+
+
+    try{
+      const response = await fetch('http://localhost:3001/admin/users', {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+      })
+  
+      if (!response.ok) {
+        const message = 'Error with Status Code: ' + response.status;
+        throw new Error(message);
+        }
+      
+        const data = await response.json();
+        console.log(data);
+  
+    }catch (error) {
+      console.log('Error: ' + error);
+    }finally{
+      location.reload();
+    }
+  }
+
+
+  crearUsuario():void{
+
+    let user = {
+      Correo: this.usuarioDB.form.value.Correo,
+      Nombre: this.usuarioDB.form.value.Nombre, 
+      Apellido: this.usuarioDB.form.value.Apellido,
+      Contrasenia: this.usuarioDB.form.value.Contrasenia,
+      celular: this.usuarioDB.form.value.celular,
+      fechaNacimiento: this.usuarioDB.form.value.fechaNacimiento,
+      isAdmin:this.usuarioDB.form.value.isAdmin
     };
 
 
     fetch('http://localhost:3001/admin/users', {
-        method: 'POST',
+        method: "POST",
         headers: {       
           'Content-Type': 'application/json',
         },
@@ -73,5 +116,7 @@ export class CreateUserComponent implements OnInit {
   formChanged() {
     this.wasFormChanged = true;
   }
+
+  
 
 }

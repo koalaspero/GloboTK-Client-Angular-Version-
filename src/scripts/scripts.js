@@ -126,36 +126,4 @@ const peticion = (url) => {
  }
 
 
-function modoEdicion(id){
-  
-	fetch('http://localhost:3001/users')
-	.then(texto => texto.json())
-	.then(clientes => {
-		for(let cliente of clientes) {
-			if(new String(cliente.Correo).valueOf() == new String(id).valueOf()){
-        let correo = document.getElementById("email");
-        let nombre = document.querySelector("#nombre");
-        let lastName = document.querySelector("#apellido");
-        let password = document.getElementById("password");
-        let phone = document.getElementById("numero");
-        let fecha = document.querySelector("#fecha");
-        let admin = document.querySelector("#admin");
-				
-
-        correo.setAttribute('ng-reflect-value',cliente.Correo);
-        nombre.setAttribute('ng-reflect-value',cliente.Nombre);
-        lastName.setAttribute('ng-reflect-value',cliente.Apellido);
-        password.setAttribute('ng-reflect-value',cliente.Contrasenia);
-        phone.setAttribute('ng-reflect-value',cliente.celular);
-        fecha.setAttribute('ng-reflect-value',cliente.fechaNacimiento.slice(0,10));
-        lastName.setAttribute('ng-reflect-value',cliente.Apellido);
-				admin.setAttribute('aria-checked',cliente.isAdmin);
-				
-			}
-		}
-	});
-
-
-
-}
 

@@ -11,6 +11,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table'; 
 
 
 
@@ -31,6 +32,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator'; 
+import {MatSortModule} from '@angular/material/sort'; 
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatNativeDateModule,
     MatCheckboxModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
