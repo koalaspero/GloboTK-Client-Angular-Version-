@@ -33,7 +33,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
-import {MatSortModule} from '@angular/material/sort'; 
+import {MatSortModule} from '@angular/material/sort';
+import { ProfileComponent } from './profile/profile.component'; 
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MatSortModule} from '@angular/material/sort';
     DashboardComponent,
     AdminNewsComponent,
     AdminUsersComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ export class NewsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    $('body').attr("onload","peticion('https://rss.app/feeds/UlT3AP491rmIn4II.xml')");
+    
   }
 
 }

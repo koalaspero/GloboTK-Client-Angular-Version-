@@ -10,6 +10,7 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { AdminUsersComponent } from "./admin-users/admin-users.component";
 import { AdminNewsComponent } from "./admin-news/admin-news.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 const routes: Routes = [
     { path: '', component: LoginComponent },
@@ -19,20 +20,24 @@ const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactoComponent },
+    { path: 'profile', component: ProfileComponent },
     { path: 'home/news', redirectTo: '/news', pathMatch: 'full' },
     { path: 'home/about', redirectTo: '/about', pathMatch: 'full' },
     { path: 'home/contact', redirectTo: '/contact', pathMatch: 'full' },
     { path: 'home/explore', redirectTo: '/explore', pathMatch: 'full' },
+    { path: 'home/profile', redirectTo: '/profile', pathMatch: 'full' },
     { path: 'home/home', redirectTo: '/home', pathMatch: 'full' },
     { path: 'explore/home', redirectTo: '/home', pathMatch: 'full' },
     { path: 'explore/news', redirectTo: '/news', pathMatch: 'full' },
     { path: 'explore/about', redirectTo: '/about', pathMatch: 'full' },
     { path: 'explore/contact', redirectTo: '/contact', pathMatch: 'full' },
+    { path: 'explore/profile', redirectTo: '/profile', pathMatch: 'full' },
     { path: 'explore/explore', redirectTo: '/explore', pathMatch: 'full' },
     { path: 'news/home', redirectTo: '/home', pathMatch: 'full' },
     { path: 'news/about', redirectTo: '/about', pathMatch: 'full' },
     { path: 'news/explore', redirectTo: '/explore', pathMatch: 'full' },
     { path: 'news/contact', redirectTo: '/contact', pathMatch: 'full' },
+    { path: 'news/profile', redirectTo: '/profile', pathMatch: 'full' },
     { path: 'news/news', redirectTo: '/news', pathMatch: 'full' },
     { path: 'about/home', redirectTo: '/home', pathMatch: 'full' },
     { path: 'about/news', redirectTo: '/news', pathMatch: 'full' },

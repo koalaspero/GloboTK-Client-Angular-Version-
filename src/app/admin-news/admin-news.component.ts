@@ -11,7 +11,7 @@ import { NewsDBService } from '../news-db.service';
   styleUrls: ['./admin-news.component.css']
 })
 export class AdminNewsComponent implements OnInit {
-  displayedColumns: string[] = ['ID', 'Titulo', 'Descripción', 'Link Imagen','Actualizado','Categoría','actions'];
+  displayedColumns: string[] = ['ID', 'Titulo', 'Descripción', 'Link Imagen','Actualizado','Categoría','Enlace a Noticia','actions'];
   dataList: MatTableDataSource<any> = new MatTableDataSource<any>();
   @ViewChild(MatSort)
   sort: MatSort = new MatSort();
