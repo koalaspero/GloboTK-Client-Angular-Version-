@@ -9,8 +9,6 @@ import { Observable } from 'rxjs/internal/Observable';
 
 
 export class UsuarioDBService {
-
-  
   
   constructor(private http: HttpClient){ 
   }

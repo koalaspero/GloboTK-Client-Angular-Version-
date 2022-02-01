@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     }
     
-
+    
 })
 
 function cerrarSesion(){
