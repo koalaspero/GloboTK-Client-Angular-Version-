@@ -10,6 +10,7 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { AdminUsersComponent } from "./admin-users/admin-users.component";
 import { AdminNewsComponent } from "./admin-news/admin-news.component";
+import { ChartsComponent } from './charts/charts.component'; 
 
 const routes: Routes = [
     { path: '', component: LoginComponent },
@@ -47,15 +48,23 @@ const routes: Routes = [
 	{ path: 'dashboard', component: DashboardComponent },
     { path: 'admUsers', component: AdminUsersComponent },
     { path: 'admNews', component: AdminNewsComponent },
+	{ path: 'charts', component: ChartsComponent },
     { path: 'dashboard/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'dashboard/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
     { path: 'dashboard/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+	{ path: 'dashboard/charts', redirectTo: '/charts',pathMatch: 'full' },
+	{ path: 'admUsers/charts', redirectTo: '/charts',pathMatch: 'full' },
 	{ path: 'admUsers/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'admUsers/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
     { path: 'admUsers/admNews', redirectTo: '/admNews',pathMatch: 'full' },
 	{ path: 'admNews/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
-    { path: 'admNews/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
-    { path: 'admNews/admNews', redirectTo: '/admNews',pathMatch: 'full' }
+    { path: 'admNews/charts', redirectTo: '/charts',pathMatch: 'full' },
+	{ path: 'admNews/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
+    { path: 'admNews/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+	{ path: 'charts/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
+    { path: 'charts/charts', redirectTo: '/charts',pathMatch: 'full' },
+	{ path: 'charts/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
+    { path: 'charts/admNews', redirectTo: '/admNews',pathMatch: 'full' }
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

@@ -1,0 +1,101 @@
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="" routerLink="dashboard">GloboTK Admin</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li class="nav-item"><button type="button" class="btn btn-light btn-circle btn-xl" onclick="cerrarSesion();"><i class="fas fa-sign-out-alt"></i></button></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Principal</div>
+                            <a class="nav-link" href="" routerLink="dashboard">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                GloboTK
+                            </a>
+                            
+                            <div class="sb-sidenav-menu-heading">Secciones</div>
+                            <a class="nav-link" href="" routerLink="charts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Graficos
+                            </a>
+                            <a class="nav-link" href="" routerLink="admNews">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Noticias
+                            </a>
+							<a class="nav-link" href="" routerLink="admUsers">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Usuarios
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+			<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Gráficos</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Gráficos</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
+                                <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>
+                                .
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-area me-1"></i>
+                                Area Chart
+                            </div>
+                            <div class="card-body">
+								<svg width="600" height="300" id="areaChart" style="position: relative; display: block; margin: auto"></svg> 
+							</div>
+                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        Bar Chart
+                                    </div>
+                                    <div class="card-body">
+										<svg width="600" height="300" id="barChart" style="position: relative; display: block; margin: auto" ></svg> 									
+									</div>
+                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-pie me-1"></i>
+                                        Pie Chart
+                                    </div>
+                                    <div class="card-body">
+										<svg width="600" height="300" id="pieChart" style="position: relative; display: block; margin: auto" ></svg> 									
+									</div>
+                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+		<app-footer></app-footer>
