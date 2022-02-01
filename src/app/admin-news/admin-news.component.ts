@@ -121,7 +121,7 @@ export class AdminNewsComponent implements OnInit {
       })
     }
     function guardarRock(){
-      fetch("https://rss.app/feeds/rDlrPYY9QfuTx7p2.xml")
+      fetch("https://rss.app/feeds/aO4MIBzrsBkM0zGH.xml")
       .then(texto => texto.text())
       .then(data => {
         const parser = new DOMParser();
@@ -135,6 +135,8 @@ export class AdminNewsComponent implements OnInit {
          let imagen = noticia.getElementsByTagName("media:content")[0].getAttribute("url");
          let fechaP = noticia.getElementsByTagName("pubDate")[0].textContent;
          let cate = "Rock";
+         let enlace = noticia.getElementsByTagName("link")[0].innerHTML
+         
         
          const postData = {
           titulo: titulo,
@@ -142,6 +144,7 @@ export class AdminNewsComponent implements OnInit {
           ImagenAsociada: imagen,
           fechaActualizacion: fechaP,
           categoria: cate,
+          rutaNoticia: enlace
           };
           console.log(postData);
           
