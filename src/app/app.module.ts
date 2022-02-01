@@ -34,11 +34,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
 import {MatSortModule} from '@angular/material/sort';
-<<<<<<< HEAD
 import { ProfileComponent } from './profile/profile.component'; 
-=======
 import { ChartsComponent } from './charts/charts.component'; 
->>>>>>> 9f583a7e53ef2a77d789415db8406d0c9bf2191d
 
 @NgModule({
   declarations: [
@@ -55,11 +52,8 @@ import { ChartsComponent } from './charts/charts.component';
     AdminNewsComponent,
     AdminUsersComponent,
     CreateUserComponent,
-<<<<<<< HEAD
-    ProfileComponent
-=======
+    ProfileComponent,
     ChartsComponent
->>>>>>> 9f583a7e53ef2a77d789415db8406d0c9bf2191d
   ],
   imports: [
     BrowserModule,
