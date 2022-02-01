@@ -32,9 +32,10 @@ export class AdminUsersComponent implements OnInit {
   }
 
   onEdit(element: any){
+    console.log(element);
     this.usuarioDB.populateForm(element);
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(CreateUserComponent,dialogConfig);

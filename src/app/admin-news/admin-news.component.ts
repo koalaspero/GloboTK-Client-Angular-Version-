@@ -3,6 +3,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { NewsDBService } from '../news-db.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { EditNewsComponent } from '../edit-news/edit-news.component';
+
 
 
 @Component({
@@ -19,212 +22,9 @@ export class AdminNewsComponent implements OnInit {
   searchKey: string = "";
   
   
-  constructor(private newsDB:NewsDBService) { }
+  constructor(public dialog: MatDialog, private newsDB:NewsDBService) { }
 
   ngOnInit(): void {
-
-    /*function guardarMusicNews(){
-      fetch("https://rss.app/feeds/6DHSn2LP8K3Sk7I8.xml")
-      .then(texto => texto.text())
-      .then(data => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data, "application/xml");
-        var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        console.log(xml);
-        let items = xml.getElementsByTagName('item');
-        Array.from(items).forEach(async noticia =>{
-         let titulo = noticia.getElementsByTagName("title")[0].innerHTML.replace('<![CDATA[',"").replace(']]>','');
-         let desc = noticia.getElementsByTagName("description")[0].innerHTML.split("<div>")[2].replace("</div></div>]]>","");
-         let imagen = noticia.getElementsByTagName("media:content")[0].getAttribute("url");
-         let fechaP = noticia.getElementsByTagName("pubDate")[0].textContent;
-         let cate = "Music News";
-         let enlace = noticia.getElementsByTagName("link")[0].innerHTML
-        
-         const postData = {
-          titulo: titulo,
-          descripcion: desc,
-          ImagenAsociada: imagen,
-          fechaActualizacion: fechaP,
-          categoria: cate,
-          rutaNoticia: enlace
-          };
-          console.log(postData);
-          
-         try {
-          const response = await fetch('http://localhost:3001/noticias/', {
-            method: "post",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postData)
-          });
-        
-          if (!response.ok) {
-            const message = 'Error with Status Code: ' + response.status;
-            throw new Error(message);
-          }
-        
-          const data = await response.json();
-          console.log(data);
-        } catch (error) {
-          console.log('Error: ' + error);
-        } 
-        
-        })
-      })
-    }
-  
-    function guardarPop(){
-      fetch("https://rss.app/feeds/oxIxqxi1qfCXaMp2.xml")
-      .then(texto => texto.text())
-      .then(data => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data, "application/xml");
-        var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        console.log(xml);
-        let items = xml.getElementsByTagName('item');
-        Array.from(items).forEach(async noticia =>{
-         let titulo = noticia.getElementsByTagName("title")[0].innerHTML.replace('<![CDATA[',"").replace(']]>','');
-         let desc = noticia.getElementsByTagName("description")[0].innerHTML.split("<div>")[2].replace("</div></div>]]>","");
-         let imagen = noticia.getElementsByTagName("media:content")[0].getAttribute("url");
-         let fechaP = noticia.getElementsByTagName("pubDate")[0].textContent;
-         let cate = "Pop";
-         let enlace = noticia.getElementsByTagName("link")[0].innerHTML
-        
-         const postData = {
-          titulo: titulo,
-          descripcion: desc,
-          ImagenAsociada: imagen,
-          fechaActualizacion: fechaP,
-          categoria: cate,
-          rutaNoticia: enlace
-          };
-          console.log(postData);
-          
-         try {
-          const response = await fetch('http://localhost:3001/noticias/', {
-            method: "post",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postData)
-          });
-        
-          if (!response.ok) {
-            const message = 'Error with Status Code: ' + response.status;
-            throw new Error(message);
-          }
-
-          const data = await response.json();
-          console.log(data);
-        } catch (error) {
-          console.log('Error: ' + error);
-        } 
-        
-        })
-      })
-    }
-    function guardarRock(){
-      fetch("https://rss.app/feeds/aO4MIBzrsBkM0zGH.xml")
-      .then(texto => texto.text())
-      .then(data => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data, "application/xml");
-        var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        console.log(xml);
-        let items = xml.getElementsByTagName('item');
-        Array.from(items).forEach(async noticia =>{
-         let titulo = noticia.getElementsByTagName("title")[0].innerHTML.replace('<![CDATA[',"").replace(']]>','');
-         let desc = noticia.getElementsByTagName("description")[0].innerHTML.split("<div>")[2].replace("</div></div>]]>","");
-         let imagen = noticia.getElementsByTagName("media:content")[0].getAttribute("url");
-         let fechaP = noticia.getElementsByTagName("pubDate")[0].textContent;
-         let cate = "Rock";
-         let enlace = noticia.getElementsByTagName("link")[0].innerHTML
-         
-        
-         const postData = {
-          titulo: titulo,
-          descripcion: desc,
-          ImagenAsociada: imagen,
-          fechaActualizacion: fechaP,
-          categoria: cate,
-          rutaNoticia: enlace
-          };
-          console.log(postData);
-          
-         try {
-          const response = await fetch('http://localhost:3001/noticias/', {
-            method: "post",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postData)
-          });
-        
-          if (!response.ok) {
-            const message = 'Error with Status Code: ' + response.status;
-            throw new Error(message);
-          }
-        
-          const data = await response.json();
-          console.log(data);
-        } catch (error) {
-          console.log('Error: ' + error);
-        } 
-        
-        })
-      })
-    }
-    function guardarLatin(){
-      fetch("https://rss.app/feeds/HaCqCWAWv8SBxt53.xml")
-      .then(texto => texto.text())
-      .then(data => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data, "application/xml");
-        var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        console.log(xml);
-        let items = xml.getElementsByTagName('item');
-        Array.from(items).forEach(async noticia =>{
-         let titulo = noticia.getElementsByTagName("title")[0].innerHTML.replace('<![CDATA[',"").replace(']]>','');
-         let desc = noticia.getElementsByTagName("description")[0].innerHTML.split("<div>")[2].replace("</div></div>]]>","");
-         let imagen = noticia.getElementsByTagName("media:content")[0].getAttribute("url");
-         let fechaP = noticia.getElementsByTagName("pubDate")[0].textContent;
-         let cate = "Latin";
-         let enlace = noticia.getElementsByTagName("link")[0].innerHTML
-        
-         const postData = {
-          titulo: titulo,
-          descripcion: desc,
-          ImagenAsociada: imagen,
-          fechaActualizacion: fechaP,
-          categoria: cate,
-          rutaNoticia: enlace
-          };
-          console.log(postData);
-          
-         try {
-          const response = await fetch('http://localhost:3001/noticias/', {
-            method: "post",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postData)
-          });
-        
-          if (!response.ok) {
-            const message = 'Error with Status Code: ' + response.status;
-            throw new Error(message);
-          }
-        
-          const data = await response.json();
-          console.log(data);
-        } catch (error) {
-          console.log('Error: ' + error);
-        } 
-        
-        })
-      })
-    }*/
 
 
       var guardarB = document.getElementById("botonGuardar");
@@ -235,7 +35,6 @@ export class AdminNewsComponent implements OnInit {
         this.rssRequest("https://rss.app/feeds/aO4MIBzrsBkM0zGH.xml","Rock");
       })
 
-      
 
 
       this.newsDB.getNoticias().subscribe((noticias: any[])=>{
@@ -261,6 +60,15 @@ export class AdminNewsComponent implements OnInit {
       }
     });
 
+  }
+
+  onEdit(news: any){
+    this.newsDB.populateForm(news);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(EditNewsComponent,dialogConfig);
   }
 
   filtra(){

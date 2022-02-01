@@ -35,7 +35,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
 import {MatSortModule} from '@angular/material/sort';
 import { ProfileComponent } from './profile/profile.component'; 
-import { ChartsComponent } from './charts/charts.component'; 
+import { ChartsComponent } from './charts/charts.component';
+import { EditNewsComponent } from './edit-news/edit-news.component'; 
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ChartsComponent } from './charts/charts.component';
     AdminUsersComponent,
     CreateUserComponent,
     ProfileComponent,
-    ChartsComponent
+    ChartsComponent,
+    EditNewsComponent
   ],
   imports: [
     BrowserModule,
