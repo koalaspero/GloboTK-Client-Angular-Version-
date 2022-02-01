@@ -36,7 +36,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { ProfileComponent } from './profile/profile.component'; 
 import { ChartsComponent } from './charts/charts.component';
-import { EditNewsComponent } from './edit-news/edit-news.component'; 
+import { EditNewsComponent } from './edit-news/edit-news.component';
+import { AdminSessionsComponent } from './admin-sessions/admin-sessions.component';
+import { EditSessionComponent } from './edit-session/edit-session.component'; 
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { EditNewsComponent } from './edit-news/edit-news.component';
     CreateUserComponent,
     ProfileComponent,
     ChartsComponent,
-    EditNewsComponent
+    EditNewsComponent,
+    AdminSessionsComponent,
+    EditSessionComponent
   ],
   imports: [
     BrowserModule,

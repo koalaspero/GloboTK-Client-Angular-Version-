@@ -1,0 +1,45 @@
+<div>
+    <div class="add-title">
+      <h2 id="title" class="primary">Noticia</h2>
+    </div>
+    <div>
+      <form [formGroup]="sessionDB.form" >
+        <mat-grid-list cols="2" rowHeight="100px">
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput id="id" placeholder="ID" value=""  formControlName="id" aria-disabled="true">
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <textarea matInput id="title" placeholder="Correo" value="" formControlName="correoUser" required></textarea>
+                <mat-error *ngIf="sessionDB.form.controls['correoUser'].hasError('required')">
+                  Por favor ingresa un correo
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+      
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput id="Fecha" [matDatepicker]="picker1" dateformat="y M d" placeholder="Fecha" formControlName="fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          
+        </mat-grid-list>
+
+        <div class="btn-sec">
+          <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="onSubmit()" [disabled]="sessionDB.form.invalid">Guardar</button>
+        </div>
+  
+      </form>
+    </div>
+  </div>

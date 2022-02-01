@@ -12,6 +12,7 @@ import { AdminUsersComponent } from "./admin-users/admin-users.component";
 import { AdminNewsComponent } from "./admin-news/admin-news.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { ChartsComponent } from './charts/charts.component'; 
+import { AdminSessionsComponent } from "./admin-sessions/admin-sessions.component";
 
 
 const routes: Routes = [
@@ -56,23 +57,33 @@ const routes: Routes = [
 	{ path: 'dashboard', component: DashboardComponent },
     { path: 'admUsers', component: AdminUsersComponent },
     { path: 'admNews', component: AdminNewsComponent },
+    { path: 'admSes', component: AdminSessionsComponent },
 	{ path: 'charts', component: ChartsComponent },
     { path: 'dashboard/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'dashboard/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
     { path: 'dashboard/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+    { path: 'dashboard/admSes', redirectTo: '/admSes',pathMatch: 'full' },
 	{ path: 'dashboard/charts', redirectTo: '/charts',pathMatch: 'full' },
 	{ path: 'admUsers/charts', redirectTo: '/charts',pathMatch: 'full' },
 	{ path: 'admUsers/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'admUsers/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
     { path: 'admUsers/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+    { path: 'admUsers/admSes', redirectTo: '/admSes',pathMatch: 'full' },
 	{ path: 'admNews/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'admNews/charts', redirectTo: '/charts',pathMatch: 'full' },
 	{ path: 'admNews/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
     { path: 'admNews/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+    { path: 'admNews/admSes', redirectTo: '/admSes',pathMatch: 'full' },
 	{ path: 'charts/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'charts/charts', redirectTo: '/charts',pathMatch: 'full' },
 	{ path: 'charts/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
-    { path: 'charts/admNews', redirectTo: '/admNews',pathMatch: 'full' }
+    { path: 'charts/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+    { path: 'charts/admSes', redirectTo: '/admSes',pathMatch: 'full' },
+    { path: 'admSes/admSes', redirectTo: '/admSes',pathMatch: 'full' },
+    { path: 'admSes/charts', redirectTo: '/charts',pathMatch: 'full' },
+    { path: 'admSes/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+    { path: 'admSes/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
+    { path: 'admSes/dashboard', redirectTo: '/dashboard',pathMatch: 'full' }
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
