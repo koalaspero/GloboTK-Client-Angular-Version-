@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="index.html">GloboTK</a>
+        <a class="navbar-brand" href="home">GloboTK</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -35,20 +35,53 @@
 <div class="container px-4 px-lg-5 py-3 py-lg-4">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class=".col-md-4.col-md-4.col-md-4">
-            <select id="genre" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option selected>Open this select menu</option>
-                <option value="Pop">Pop</option>
-                <option value="Rock">Rock</option>
-                <option value="Latin">Latin</option>
-                <option value="Music News">Music News</option>
+
+            <div class="input-group-prepend" data-step="1" data-intro="Filtramos por género musical o simplemente vemos de todo">
+               <label class="input-group-text text-center" for="inputGroupSelect01">Tipos de noticias</label>
+            </div>
+            <select class="form-select" aria-label="Default select example" id="inputGroupSelect01"(change)="selectChangeHandler($event)">
+                <option selected>Opciones</option>
+                <option  value="pop">Pop</option>
+                <option  value="rock">Rock</option>
+                <option  value="latin">Latin</option>
+                <option  value="musicnews">Music News</option>
             </select>
+          
+
         </div>
     </div>
 </div>
     <!-- Post Content-->
 
 <!--More News-->
-<div id="news-container" class="noticias container">
+<div class="container" id="noticiasS" *ngFor="let noti of noticias; let first = first;">
+    
+   <div id="not-{{ noti.id }}">
+       <div class="card mb-3" >
+            <div class="row g-0">
+              <div class="nimg col-md-4">
+                <img src="{{ noti['ImagenAsociada'] }}" class="img-fluid img-thumbnail" alt="news_img">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h1 class="card-title"><b>{{ noti["titulo"] }}</b></h1>
+                  <h2 class="card-title">{{ noti["descripcion"]}}</h2>
+                  <div class="d-flex justify-content-between">
+                    <div>
+                        <h3><a href="{{noti ['rutaNoticia'] }}"><p *ngIf="first"data-step="2" data-intro="Enlace al darle click o tocarle (moviles), nos lleva a la noticia completa" class ="card-text"><b>=> Más info aquí en el enlace <=</b></p></a></h3>
+                        <h3><a href="{{noti ['rutaNoticia'] }}"><p *ngIf="!first"class ="card-text"><b>=> Más info aquí en el enlace <=</b></p></a></h3>
+                        <p class="card-text">Updated: {{ noti["fechaActualizacion"] }}</p>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary" id="btn-fav-{{ noti.id }}"(click)="guardarFavorito($event)">Guardar en favoritos ⭐</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+   
 </div> 
 
 <app-footer></app-footer>

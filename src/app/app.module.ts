@@ -12,7 +12,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table'; 
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 import { AppComponent } from './app.component';
@@ -84,7 +84,8 @@ import { EditCountrySessionComponent } from './edit-country-session/edit-country
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
