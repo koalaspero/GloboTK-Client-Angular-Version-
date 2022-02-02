@@ -35,27 +35,20 @@
 <div class="container px-4 px-lg-5 py-3 py-lg-4">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class=".col-md-4.col-md-4.col-md-4">
-            <div data-step="1" data-intro="Filtramos por género musical o simplemente vemos de todo" class="btn-group">
-                <button type="button" class="btn btn-danger">Género</button>
-                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item"  onclick="peticion('https://rss.app/feeds/EfsG8YIU8weZB8La.xml')">Pop</a></li>
-                    <li><a class="dropdown-item"  onclick="peticion('https://rss.app/feeds/EnHRZPoN1pZYsf01.xml')">Rock</a></li>
-                    <li><a class="dropdown-item"  onclick="peticion('https://rss.app/feeds/CMpY6Xr4mRuk01p1.xml')">Latin</a></li>
-                    
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" onclick="peticion('https://rss.app/feeds/UlT3AP491rmIn4II.xml')" >Music News</a></li>
-                </ul>
-            </div>
+            <select id="genre" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Open this select menu</option>
+                <option value="Pop">Pop</option>
+                <option value="Rock">Rock</option>
+                <option value="Latin">Latin</option>
+                <option value="Music News">Music News</option>
+            </select>
         </div>
     </div>
 </div>
     <!-- Post Content-->
 
 <!--More News-->
-<div class="noticias container">
+<div id="news-container" class="noticias container">
 </div> 
 
 <app-footer></app-footer>
