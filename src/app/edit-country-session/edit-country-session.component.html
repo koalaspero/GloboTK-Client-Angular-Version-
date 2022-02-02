@@ -1,0 +1,64 @@
+<div>
+    <div class="add-title">
+      <h2 id="title" class="primary">Noticia</h2>
+    </div>
+    <div>
+      <form [formGroup]="cosessionDB.form" >
+        <mat-grid-list cols="2" rowHeight="100px">
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput id="id" placeholder="ID" value=""  formControlName="id" readonly>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <input matInput id="pais" placeholder="Pais" value="" formControlName="pais" required>
+                <mat-error *ngIf="cosessionDB.form.controls['pais'].hasError('required')">
+                  Por favor ingresa un pais
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+      
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput id="Fecha" [matDatepicker]="picker1" dateformat="y M d" placeholder="Fecha" formControlName="fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+        
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <textarea matInput id="image" placeholder="Country Spotify Link" formControlName="enlacePais" required></textarea>
+                <mat-error *ngIf="cosessionDB.form.controls['enlacePais'].hasError('required')">
+                  Por favor ingresa una enlace
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput id="idPais" placeholder="ID_Sesion_Principal" value=""  formControlName="idSesion" readonly>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          
+        </mat-grid-list>
+
+        <div class="btn-sec">
+          <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="onSubmit()" [disabled]="cosessionDB.form.invalid">Guardar</button>
+        </div>
+  
+      </form>
+    </div>
+  </div>

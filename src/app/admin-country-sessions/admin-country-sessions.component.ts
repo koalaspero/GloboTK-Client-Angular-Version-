@@ -3,28 +3,29 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { EditSessionComponent } from '../edit-session/edit-session.component';
-import { SessionsdbService } from '../sessionsdb.service';
+import { CountrySessionsDBService } from '../country-sessions-db.service';
+import { EditCountrySessionComponent } from '../edit-country-session/edit-country-session.component';
 
 @Component({
-  selector: 'app-admin-sessions',
-  templateUrl: './admin-sessions.component.html',
-  styleUrls: ['./admin-sessions.component.css']
+  selector: 'app-admin-country-sessions',
+  templateUrl: './admin-country-sessions.component.html',
+  styleUrls: ['./admin-country-sessions.component.css']
 })
-export class AdminSessionsComponent implements OnInit {
+export class AdminCountrySessionsComponent implements OnInit {
 
-  displayedColumns: string[] = ['ID', 'Fecha','Correo','actions'];
+  displayedColumns: string[] = ['ID', 'Pais','enlacePais','fecha','idSesion','actions'];
   dataList: MatTableDataSource<any> = new MatTableDataSource<any>();
   @ViewChild(MatSort)
   sort: MatSort = new MatSort();
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   searchKey: string = "";
 
-  constructor(public dialog: MatDialog, private sessionDB: SessionsdbService) { }
+  constructor(public dialog: MatDialog, private sessionPaisDB: CountrySessionsDBService) { }
 
   ngOnInit(): void {
-    this.sessionDB.getSesiones().subscribe((data: any[])=>{
-      this.dataList.data = data;
+    this.sessionPaisDB.getSesPais().subscribe((sesionPais: any[])=>{
+      console.log(sesionPais);
+      this.dataList.data = sesionPais;
       this.dataList.sort = this.sort;
       this.dataList.paginator = this.paginator ;
     })
@@ -32,7 +33,7 @@ export class AdminSessionsComponent implements OnInit {
 
   deleteSesion(id: string): void {
     $.ajax( {
-      url : "http://localhost:3001/api/sesiones",
+      url : "http://localhost:3001/session/country",
       type : 'DELETE',
       data: jQuery.param({"id": id}),
       success : function ( data ) {
@@ -45,13 +46,13 @@ export class AdminSessionsComponent implements OnInit {
     });
   }
 
-  onEdit(news: any){
-    this.sessionDB.populateForm(news);
+  onEdit(sessions: any){
+    this.sessionPaisDB.populateForm(sessions);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(EditSessionComponent,dialogConfig);
+    this.dialog.open(EditCountrySessionComponent,dialogConfig);
   }
 
   filtra(){

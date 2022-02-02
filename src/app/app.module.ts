@@ -38,7 +38,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { ChartsComponent } from './charts/charts.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
 import { AdminSessionsComponent } from './admin-sessions/admin-sessions.component';
-import { EditSessionComponent } from './edit-session/edit-session.component'; 
+import { EditSessionComponent } from './edit-session/edit-session.component';
+import { AdminCountrySessionsComponent } from './admin-country-sessions/admin-country-sessions.component';
+import { EditCountrySessionComponent } from './edit-country-session/edit-country-session.component'; 
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { EditSessionComponent } from './edit-session/edit-session.component';
     ChartsComponent,
     EditNewsComponent,
     AdminSessionsComponent,
-    EditSessionComponent
+    EditSessionComponent,
+    AdminCountrySessionsComponent,
+    EditCountrySessionComponent
   ],
   imports: [
     BrowserModule,

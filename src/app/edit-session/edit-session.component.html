@@ -8,7 +8,7 @@
           <mat-grid-tile>
             <div class="text-inside">
               <mat-form-field>
-                <input matInput id="id" placeholder="ID" value=""  formControlName="id" aria-disabled="true">
+                <input matInput id="id" placeholder="ID" value=""  formControlName="id" readonly>
               </mat-form-field>
             </div>
           </mat-grid-tile>
@@ -16,7 +16,7 @@
           <mat-grid-tile>
             <div class="text-inside">
               <mat-form-field class="example-full-width">
-                <textarea matInput id="title" placeholder="Correo" value="" formControlName="correoUser" required></textarea>
+                <textarea matInput id="title" placeholder="Correo" value="" formControlName="correoUser" readonly></textarea>
                 <mat-error *ngIf="sessionDB.form.controls['correoUser'].hasError('required')">
                   Por favor ingresa un correo
                 </mat-error>

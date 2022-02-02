@@ -8,7 +8,7 @@
           <mat-grid-tile>
             <div class="text-inside">
               <mat-form-field>
-                <input matInput id="id" placeholder="ID" value=""  formControlName="id" aria-disabled="true">
+                <input matInput id="id" placeholder="ID" value=""  formControlName="id" readonly>
               </mat-form-field>
             </div>
           </mat-grid-tile>
@@ -72,7 +72,7 @@
               <mat-form-field class="example-full-width">
                 <textarea matInput id="rutaNoticia" placeholder="Enlace a la Noticia" value='' formControlName="rutaNoticia" required></textarea>
                 <mat-error *ngIf="newsDB.form.controls['rutaNoticia'].hasError('required')">
-                  Por favor ingresa una descripcion
+                  Por favor ingresa una ruta
                 </mat-error>
               </mat-form-field>
             </div>
