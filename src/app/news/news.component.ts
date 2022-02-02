@@ -20,8 +20,48 @@ export class NewsComponent implements OnInit {
     /*var selectur: HTMLElement | null = document.getElementById("genre");
     this.newsRequest(selectur);
     */
-    
+    var barraBusqueda: HTMLElement | null = document.getElementById("filtrador");
+    this.buscador(barraBusqueda);
+
+    var botonLimpiador: HTMLElement | null = document.getElementById("limpiador");
+    this.limpiador(botonLimpiador);
   }
+
+  buscador(texto: HTMLElement | null){
+    texto!.addEventListener("keyup", () => {
+      let valor = document.getElementsByTagName("input")[0].value;
+      let elementos: any = document.getElementsByClassName("noti-card-container")
+      //console.log(valor.length)
+      if(valor.length>0){
+        for(let e of elementos){
+          if(e.innerText.includes(valor)){
+            e.classList.add("d-inline")
+          }else{
+            e.classList.add("d-none")
+          }
+        }
+      }else{
+        for(let e of elementos){
+          e.classList.remove("d-none")
+          e.classList.add("d-inline")
+        }
+      }
+    })
+  }
+   
+  limpiador(boton: HTMLElement | null){
+    boton!.onclick = function(){
+      document.getElementsByTagName("input")[0].value = "";
+      let noticias: any = document.getElementsByClassName("noti-card-container")
+      for(let item of noticias){
+        item.classList.remove("d-none")
+        item.classList.add("d-inline")
+      }
+    }  
+  }
+
+
+
   selectChangeHandler(event: any) {
     this.noticias = [];
     fetch('http://localhost:3001/noticias/'+event.target.value)
