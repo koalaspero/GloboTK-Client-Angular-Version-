@@ -40,7 +40,8 @@ import { EditNewsComponent } from './edit-news/edit-news.component';
 import { AdminSessionsComponent } from './admin-sessions/admin-sessions.component';
 import { EditSessionComponent } from './edit-session/edit-session.component';
 import { AdminCountrySessionsComponent } from './admin-country-sessions/admin-country-sessions.component';
-import { EditCountrySessionComponent } from './edit-country-session/edit-country-session.component'; 
+import { EditCountrySessionComponent } from './edit-country-session/edit-country-session.component';
+import { AdminReportComponent } from './admin-report/admin-report.component'; 
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { EditCountrySessionComponent } from './edit-country-session/edit-country
     AdminSessionsComponent,
     EditSessionComponent,
     AdminCountrySessionsComponent,
-    EditCountrySessionComponent
+    EditCountrySessionComponent,
+    AdminReportComponent
   ],
   imports: [
     BrowserModule,
