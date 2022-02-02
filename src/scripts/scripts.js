@@ -48,83 +48,66 @@ function deleteRequest(correo) {
 });
 
 }
-
-
-const peticion = (url) => {
-   let proxy = 'https://damp-beach-17296.herokuapp.com/'
-   //RSS de música latina de Billboard
-
-   fetch(url)
-   .then(response => response.text())
-   .then(data =>{
-     const parser = new DOMParser();
-     const xml = parser.parseFromString(data, "application/xml");
-     var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-	 
-	document.getElementsByClassName('noticias container')[0].innerHTML = "";
-     let items =xml.getElementsByTagName('item');
-     console.log(items[1].getElementsByTagName("description"))
-
-     for(let i=1 ; i < 11 ; i++){
-       let plantilla = `
-        <div class="card mb-3" >
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="" class="img-fluid img-thumbnail" alt="news_img">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h3 class="card-title">Card title</h3>
-                      <a href=""><p class ="card-text">More Info</p></a>
-                      <p class="card-text"><small class="text-muted">Updated: {fecha}</small></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        `
-      plantillaAlter = `
-      <div class="card mb-3" >
+/*
+const peticion = (categoria)=>{
+  document.getElementsByClassName('noticias container')[0].innerHTML="";
+  fetch('http://localhost:3001/noticias'+categoria)
+  .then(response => response.json())
+  .then(data =>{
+    console.log(data);
+    let variable = 0;
+    for(let noti of data){
+      let plantilla = 
+      `
+      <div id="not-${noti.id}">
+         <div class="card mb-3" >
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img src="" class="img-fluid img-thumbnail" alt="news_img">
+                  <img src="${noti.ImagenAsociada}" class="img-fluid img-thumbnail" alt="news_img">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h3 class="card-title">Card title</h3>
-                    <a href=""><p data-step="2" data-intro="Texto que al darle click o tocarle (moviles), nos lleva a la noticia completa" class ="card-text">More Info</p></a>
-                    <p class="card-text"><small class="text-muted">Updated: {fecha}</small></p>
+                    <h3 class="card-title">${noti.titulo}</h3>
+                    <a href="${noti.rutaNoticia}"><p class ="card-text">Enlace a noticia</p></a>
+                    <p class="card-text"><small class="text-muted">Updated: ${noti.fechaActualizacion}</small></p>
+                    <button type="button" class="btn btn-primary" (click)="guardarFavorito('not-${noti.id}')">Guardar en favoritos ⭐</button>
                   </div>
                 </div>
               </div>
             </div>
-      `
-      let title = items[i].getElementsByTagName('title')[0]
-      let imag = items[i].getElementsByTagName('enclosure')[0]
-	    let date = new Date(items[i].getElementsByTagName('pubDate')[0].textContent)
-      let enlace = items[i].getElementsByTagName("link")[0]
+      </div>
       
-      if(i==1){
-        plantillaAlter = plantillaAlter.replace('Card title', title.innerHTML).replace('<![CDATA[',"").replace(']]>','');
-        plantillaAlter = plantillaAlter.replace('src=""', 'src="'+imag.getAttribute("url")+'"');
-	      plantillaAlter = plantillaAlter.replace('{fecha}', date.toLocaleString('esp',opciones))
-        plantillaAlter = plantillaAlter.replace('a href="','a href="'+enlace.innerHTML+'"');
-        document.getElementsByClassName('noticias container')[0].innerHTML += plantillaAlter;
-      }else{
-        plantilla = plantilla.replace('Card title', title.innerHTML).replace('<![CDATA[',"").replace(']]>','');
-        plantilla = plantilla.replace('src=""', 'src="'+imag.getAttribute("url")+'"');
-	      plantilla = plantilla.replace('{fecha}', date.toLocaleString('esp',opciones))
-        plantilla = plantilla.replace('a href="','a href="'+enlace.innerHTML+'"');
+      `;
+      document.getElementsByClassName('noticias container')[0].innerHTML += plantilla;
 
-        document.getElementsByClassName('noticias container')[0].innerHTML += plantilla
+      if(variable=10){
+        break;
       }
-     }
-
-     console.log(xml);
-   })
-
-
-   .catch(console.error)
+    }
+  })
+  .catch(console.error);
  }
 
-
-
+ const cargarN = ()=>{
+  var selectur = document.querySelector('#inputGroupSelect01');
+  selectur.onchange = (event) => {
+    peticion(event.target.value);
+  }
+ }
+ cargarN();
+/**
+ *<div data-step="1" data-intro="Filtramos por género musical o simplemente vemos de todo" class="btn-group">
+                <button type="button" class="btn btn-danger">Género</button>
+                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item"  onclick="peticion('pop')">Pop</a></li>
+                    <li><a class="dropdown-item"  onclick="peticion('rock')">Rock</a></li>
+                    <li><a class="dropdown-item"  onclick="peticion('latin')">Latin</a></li>
+                    
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" onclick="peticion('musicnews')" >Music News</a></li>
+                </ul>
+            </div>
+ */

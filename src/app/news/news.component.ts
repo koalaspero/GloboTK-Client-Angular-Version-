@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-news',
@@ -6,17 +7,104 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
+  
+  
 
+  constructor(private snackBar: MatSnackBar) { }
 
-
-  constructor() { }
+  noticias: any[] = [];
+  
+  opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
   ngOnInit(): void {
-    var selectur: HTMLElement | null = document.getElementById("genre");
+    /*var selectur: HTMLElement | null = document.getElementById("genre");
     this.newsRequest(selectur);
+    */
+    
+  }
+  selectChangeHandler(event: any) {
+    this.noticias = [];
+    fetch('http://localhost:3001/noticias/'+event.target.value)
+    .then(response => response.json())
+    .then((data) => {
+      for(let noti of data){
+        this.noticias.push(noti);
+      }
+    }).catch(console.error);
+
+    console.log(this.noticias)
+   
+  }
+ 
+   async guardarFavorito(event: any): Promise<any> {
+    let btn = event?.target;
+
+    let iden = btn.id.split("-")[2];
+    console.log(iden);
+    var usuarioN: string;
+    let listaCookies = document.cookie.split(";")
+    let count = 0
+    for (let cook in listaCookies) {
+      let busca = listaCookies[cook].search("usuario");
+      if (busca > -1) {
+         usuarioN = listaCookies[cook].split("=")[1].replace("%40", "@");
+         count=1;
+      }
+    }
+    if(count==0){
+      return this.snackBar.open("Por favor, inicie sesión antes de guardar en Favoritos", "Cerrar");
+    }
+    
+    let datos = this.getNoticiaFav()
+    .then(async noticias => {
+        console.log(noticias)
+        let noti_id;
+        let noti_u;
+      for(let noti of noticias){
+        if(noti.idNoticia == iden && noti.correoUser == usuarioN){
+          noti_id = noti.idNoticia
+          noti_u = usuarioN
+        }
+      }
+      if(noti_id==undefined && noti_u==undefined){
+        const postData = {
+          idNoticia: iden,
+          correoUser: usuarioN,
+        };
+        try {
+          const response = await fetch('http://localhost:3001/notifav/', {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(postData)
+          });
+        
+          if (!response.ok) {
+            const message = 'Error with Status Code: ' + response.status;
+            throw new Error(message);
+          }
+        
+          const data = await response.json();
+          console.log(data); 
+          this.snackBar.open("Se ha guardado la noticia en Favoritos", "Cerrar");
+        } catch (error) {
+          console.log('Error: ' + error);
+        }
+      } else{
+         this.snackBar.open("La noticia seleccionada ya está guardada en Favoritos", "Cerrar");
+      }
+    }
+
+    );
     
   }
 
+  async getNoticiaFav() {
+    const data = await fetch('http://localhost:3001/notiFav');
+    return await data.json();
+  }
+/*
   newsRequest(select: HTMLElement | null){
     select!.onchange = (event) => {
       var t_body = document.getElementById('news-container');
@@ -81,4 +169,14 @@ export class NewsComponent implements OnInit {
 
 
 
+}
+function peticion(categoria: any) {
+  document.getElementsByClassName('noticias container')[0].innerHTML="";
+  fetch('http://localhost:3001/notiicias'+categoria)
+  .then(response => response.text())
+  .then(data =>{
+    console.log(data);
+  })
+  .catch(console.error);
+}*/
 }
