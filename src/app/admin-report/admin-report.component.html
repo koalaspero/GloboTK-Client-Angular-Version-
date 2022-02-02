@@ -1,1 +1,158 @@
-<p>admin-report works!</p>
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="" routerLink="dashboard">GloboTK Admin</a>
+    <!-- Sidebar Toggle-->
+    <!-- Navbar-->
+    <button type="button" class="btn btn-dark btn-circle btn-xl" onclick="cerrarSesion();"><i class="fas fa-sign-out-alt"></i></button>
+</nav>
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Principal</div>
+                    <a class="nav-link" href="" routerLink="dashboard">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        GloboTK
+                    </a>
+                    
+                    <div class="sb-sidenav-menu-heading">Secciones</div>
+                    <a class="nav-link" href="" routerLink="charts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Graficos
+                    </a>
+                    <a class="nav-link" href="" routerLink="admNews">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Noticias
+                    </a>
+                    <a class="nav-link" href="" routerLink="admUsers">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Usuarios
+                    </a>
+                    <a class="nav-link" href="" routerLink="admSes">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Sesiones
+                    </a>
+                    <a class="nav-link" href="" routerLink="admCoSes">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Sesion Pais 
+                    </a>
+                    <a class="nav-link" href="" routerLink="admRep">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Reporte
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Reporte</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">Seccion de reporte de GloboTK</li>
+                </ol>
+                <div class="row">
+                    <form [formGroup]="reportDB.form" >
+                        <mat-grid-list cols="2" rowHeight="100px">
+                          <mat-grid-tile>
+                              <div class="text-inside">
+                                  <mat-form-field class="example-full-width">
+                                    <mat-select placeholder="Correo" formControlName="correoUser">
+                                      <mat-option>Selecciona</mat-option>
+                                      <mat-option *ngFor="let user of userList" [value]="user.correoUser">{{user.correoUser}}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="reportDB.form.controls['correoUser'].hasError('required')">
+                                      Por favor ingresa un correo
+                                    </mat-error>
+                                  </mat-form-field>
+                                </div>
+                          </mat-grid-tile>
+                      
+                          <mat-grid-tile>
+                            <div class="text-inside">
+                              <mat-form-field>
+                                <input matInput id="Fecha de Actualizacion" [matDatepicker]="picker1" dateformat="y M d" placeholder="Fecha de Actualizacion" formControlName="fechaActualizacion">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                              </mat-form-field>
+                            </div>
+                          </mat-grid-tile>
+                
+                          <mat-grid-tile>
+                            <div class="text-inside">
+                              <mat-form-field class="example-full-width">
+                                <input matInput id="email" placeholder="Categoria" formControlName="categoria" required>
+                                <mat-error *ngIf="reportDB.form.controls['categoria'].hasError('required')">
+                                  Por favor ingresa una categoria
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </mat-grid-tile>
+                          
+                        </mat-grid-list>
+                
+                        <div class="btn-sec">
+                          <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="onSubmit()" [disabled]="reportDB.form.invalid">Guardar</button>
+                        </div>
+                  
+                      </form>
+                
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <div class="text-center px-xl-3">
+                        <button mat-raised-button class="btn btn-success btn-block" id="botonGuardar" (click)="cargarReporte()">Cargar Noticias</button>
+                      </div>
+                      <hr class="my-3">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-3 mb-3">
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Reporte
+                    </div>
+                    <div class="search-div">
+                      <mat-form-field class="search-form-field">
+                          <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="filtra()">
+                      </mat-form-field>
+                    </div>
+
+                    <table mat-table [dataSource]="dataList" class="mat-elevation-z8" matSort>
+                        <ng-container matColumnDef="idNoticia">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                            <td mat-cell *matCellDef="let element"> {{element.idNoticia}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="correoUser">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Correo</th>
+                            <td mat-cell *matCellDef="let element"> {{element.correoUser}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="titulo">
+                            <th mat-header-cell *matHeaderCellDef>Titulo</th>
+                            <td mat-cell *matCellDef="let element"> {{element.titulo}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="fechaActualizacion">
+                            <th mat-header-cell *matHeaderCellDef>Fecha_Actuliz.</th>
+                            <td mat-cell *matCellDef="let element"> {{element.fechaActualizacion| date:'MM/dd/yyyy'}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="categoria">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Categoría</th>
+                            <td mat-cell *matCellDef="let element"> {{element.categoria}}</td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" aria-label="Select page of users"></mat-paginator>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

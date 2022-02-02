@@ -41,7 +41,8 @@ import { AdminSessionsComponent } from './admin-sessions/admin-sessions.componen
 import { EditSessionComponent } from './edit-session/edit-session.component';
 import { AdminCountrySessionsComponent } from './admin-country-sessions/admin-country-sessions.component';
 import { EditCountrySessionComponent } from './edit-country-session/edit-country-session.component';
-import { AdminReportComponent } from './admin-report/admin-report.component'; 
+import { AdminReportComponent } from './admin-report/admin-report.component';
+import { ReportFormComponent } from './admin-report/report-form/report-form.component'; 
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { AdminReportComponent } from './admin-report/admin-report.component';
     EditSessionComponent,
     AdminCountrySessionsComponent,
     EditCountrySessionComponent,
-    AdminReportComponent
+    AdminReportComponent,
+    ReportFormComponent
   ],
   imports: [
     BrowserModule,

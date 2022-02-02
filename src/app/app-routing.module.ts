@@ -14,6 +14,7 @@ import { ProfileComponent } from "./profile/profile.component";
 import { ChartsComponent } from './charts/charts.component'; 
 import { AdminSessionsComponent } from "./admin-sessions/admin-sessions.component";
 import { AdminCountrySessionsComponent } from "./admin-country-sessions/admin-country-sessions.component";
+import { AdminReportComponent } from "./admin-report/admin-report.component";
 
 
 const routes: Routes = [
@@ -55,12 +56,15 @@ const routes: Routes = [
     { path: 'contact/explore', redirectTo: '/explore', pathMatch: 'full' },
     { path: 'contact/profile', redirectTo: '/profile', pathMatch: 'full' },
     { path: 'contact/contact', redirectTo: '/contact', pathMatch: 'full' },
-	{ path: 'dashboard', component: DashboardComponent },
+	
+    { path: 'dashboard', component: DashboardComponent },
     { path: 'admUsers', component: AdminUsersComponent },
     { path: 'admNews', component: AdminNewsComponent },
     { path: 'admSes', component: AdminSessionsComponent },
     { path: 'admCoSes', component: AdminCountrySessionsComponent },
+    { path: 'admRep', component: AdminReportComponent },
 	{ path: 'charts', component: ChartsComponent },
+    
 
     { path: 'dashboard/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'dashboard/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
@@ -68,6 +72,7 @@ const routes: Routes = [
     { path: 'dashboard/admSes', redirectTo: '/admSes',pathMatch: 'full' },
 	{ path: 'dashboard/charts', redirectTo: '/charts',pathMatch: 'full' },
     { path: 'dashboard/admCoSes', redirectTo: '/admCoSes',pathMatch: 'full' },
+    { path: 'dashboard/admRep', redirectTo: '/admRep',pathMatch: 'full' },
 	
     { path: 'admUsers/charts', redirectTo: '/charts',pathMatch: 'full' },
 	{ path: 'admUsers/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
@@ -75,6 +80,7 @@ const routes: Routes = [
     { path: 'admUsers/admNews', redirectTo: '/admNews',pathMatch: 'full' },
     { path: 'admUsers/admSes', redirectTo: '/admSes',pathMatch: 'full' },
     { path: 'admUsers/admCoSes', redirectTo: '/admCoSes',pathMatch: 'full' },
+    { path: 'admUsers/admRep', redirectTo: '/admRep',pathMatch: 'full' },
 	
     { path: 'admNews/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'admNews/charts', redirectTo: '/charts',pathMatch: 'full' },
@@ -82,6 +88,7 @@ const routes: Routes = [
     { path: 'admNews/admNews', redirectTo: '/admNews',pathMatch: 'full' },
     { path: 'admNews/admCoSes', redirectTo: '/admCoSes',pathMatch: 'full' },
     { path: 'admNews/admSes', redirectTo: '/admSes',pathMatch: 'full' },
+    { path: 'admNews/admRep', redirectTo: '/admRep',pathMatch: 'full' },
     
     { path: 'charts/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'charts/charts', redirectTo: '/charts',pathMatch: 'full' },
@@ -89,6 +96,7 @@ const routes: Routes = [
     { path: 'charts/admNews', redirectTo: '/admNews',pathMatch: 'full' },
     { path: 'charts/admSes', redirectTo: '/admSes',pathMatch: 'full' },
     { path: 'charts/admCoSes', redirectTo: '/admCoSes',pathMatch: 'full' },
+    { path: 'charts/admRep', redirectTo: '/admRep',pathMatch: 'full' },
     
     { path: 'admSes/admCoSes', redirectTo: '/admCoSes',pathMatch: 'full' },
     { path: 'admSes/charts', redirectTo: '/charts',pathMatch: 'full' },
@@ -96,13 +104,23 @@ const routes: Routes = [
     { path: 'admSes/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
     { path: 'admSes/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
     { path: 'admSes/admSes', redirectTo: '/admSes',pathMatch: 'full' },
+    { path: 'admSes/admRep', redirectTo: '/admRep',pathMatch: 'full' },
 
     { path: 'admCoSes/admCoSes', redirectTo: '/admCoSes',pathMatch: 'full' },
     { path: 'admCoSes/charts', redirectTo: '/charts',pathMatch: 'full' },
     { path: 'admCoSes/admNews', redirectTo: '/admNews',pathMatch: 'full' },
     { path: 'admCoSes/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
     { path: 'admCoSes/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
-    { path: 'admCoSes/admSes', redirectTo: '/admSes',pathMatch: 'full' }
+    { path: 'admCoSes/admSes', redirectTo: '/admSes',pathMatch: 'full' },
+    { path: 'admCoSes/admRep', redirectTo: '/admRep',pathMatch: 'full' },
+
+    { path: 'admRep/admCoSes', redirectTo: '/admCoSes',pathMatch: 'full' },
+    { path: 'admRep/charts', redirectTo: '/charts',pathMatch: 'full' },
+    { path: 'admRep/admNews', redirectTo: '/admNews',pathMatch: 'full' },
+    { path: 'admRep/admUsers', redirectTo: '/admUsers',pathMatch: 'full' },
+    { path: 'admRep/dashboard', redirectTo: '/dashboard',pathMatch: 'full' },
+    { path: 'admRep/admSes', redirectTo: '/admSes',pathMatch: 'full' },
+    { path: 'admRep/admRep', redirectTo: '/admRep',pathMatch: 'full' }
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
