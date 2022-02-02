@@ -36,7 +36,7 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class=".col-md-4.col-md-4.col-md-4">
 
-            <div class="input-group-prepend" data-step="1" data-intro="Filtramos por género musical o simplemente vemos de todo">
+            <div class="input-group-prepend" data-step="1" data-intro="Selecciona el tipo de noticia que desees visualizar">
                <label class="input-group-text text-center" for="inputGroupSelect01">Tipos de noticias</label>
             </div>
             <select class="form-select" aria-label="Default select example" id="inputGroupSelect01"(change)="selectChangeHandler($event)">
@@ -47,6 +47,13 @@
                 <option  value="musicnews">Music News</option>
             </select>
           
+            <div class="row row-cols-1 row-cols-md-3 g-4 mx-2 my-2">
+                <div class="input-group">
+                  <input id="filtrador" type="search" class="form-control rounded" placeholder="Buscar..." aria-label="Search"
+                    aria-describedby="search-addon" data-step="2" data-intro="Filtra por palabras claves la noticia que desees buscar. Borra todo el texto para quitar el filtro"/>
+                  <button type="button" class="btn btn-outline-primary" id="limpiador" data-step="3" data-intro="Alternativamente si se desea usar, este botón permitirá quitar el filtro">Quitar filtro</button>
+                </div>
+              </div>
 
         </div>
     </div>
@@ -56,7 +63,7 @@
 <!--More News-->
 <div class="container" id="noticiasS" *ngFor="let noti of noticias; let first = first;">
     
-   <div id="not-{{ noti.id }}">
+   <div class="noti-card-container" id="not-{{ noti.id }}">
        <div class="card mb-3" >
             <div class="row g-0">
               <div class="nimg col-md-4">
@@ -68,12 +75,13 @@
                   <h2 class="card-title">{{ noti["descripcion"]}}</h2>
                   <div class="d-flex justify-content-between">
                     <div>
-                        <h3><a href="{{noti ['rutaNoticia'] }}"><p *ngIf="first"data-step="2" data-intro="Enlace al darle click o tocarle (moviles), nos lleva a la noticia completa" class ="card-text"><b>=> Más info aquí en el enlace <=</b></p></a></h3>
+                        <h3><a href="{{noti ['rutaNoticia'] }}"><p *ngIf="first" data-step="4" data-intro="Enlace al darle click o tocarle (moviles), nos lleva a la noticia completa" class ="card-text"><b>=> Más info aquí en el enlace <=</b></p></a></h3>
                         <h3><a href="{{noti ['rutaNoticia'] }}"><p *ngIf="!first"class ="card-text"><b>=> Más info aquí en el enlace <=</b></p></a></h3>
                         <p class="card-text">Updated: {{ noti["fechaActualizacion"] }}</p>
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary" id="btn-fav-{{ noti.id }}"(click)="guardarFavorito($event)">Guardar en favoritos ⭐</button>
+                        <button *ngIf="first" type="button" class="btn btn-primary" id="btn-fav-{{ noti.id }}"(click)="guardarFavorito($event)" data-step="5" data-intro="Guarda como favorito una noticia de tu interés">Guardar en favoritos ⭐</button>
+                        <button *ngIf="!first" type="button" class="btn btn-primary" id="btn-fav-{{ noti.id }}"(click)="guardarFavorito($event)">Guardar en favoritos ⭐</button>
                     </div>
                   </div>
                 </div>
