@@ -28,9 +28,16 @@ export class ExploreComponent implements OnInit {
             let latitude = this.countryList[i].latitude;
             let longitude = this.countryList[i].longitude;
             var marker = WE.marker([latitude, longitude]).addTo(earth);
+
             marker.bindPopup(htmLine, {maxWidth: 120,closeButton:false,autoClose:true}).on('dblclick', function() {
-              var galleta = document.cookie.split("=")[1];
-              galleta = galleta.replace("%40","@");
+              let listaCookies = document.cookie.split(";")
+              var galleta;
+              for (let cook in listaCookies) {
+                let busca = listaCookies[cook].search("usuario");
+                if (busca > -1) {
+                  galleta = listaCookies[cook].split("=")[1].replace("%40", "@");
+                }
+              }
               var ruta = "http://localhost:3001/session/"+galleta;
               fetch(ruta)
               .then(texto => texto.json())
@@ -54,11 +61,12 @@ export class ExploreComponent implements OnInit {
       var dateTime = date+' '+time;
 
       let sesionPais = {
-      pais: pais,
-      enlacePais: enlace,
-      fecha: dateTime,
-      idSesion: id
-    }
+        pais: pais,
+        enlacePais: enlace,
+        fecha: dateTime,
+        idSesion: id
+      }
+
       fetch('http://localhost:3001/session/country', {
         method: 'POST',
         headers: {       
