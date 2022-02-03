@@ -27,7 +27,7 @@ export class AdminUsersComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateUserComponent,{
-      width: '640px',disableClose: true 
+      width: '640px',disableClose: false 
     });
   }
 
