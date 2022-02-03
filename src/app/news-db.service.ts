@@ -47,4 +47,8 @@ export class NewsDBService {
   getNoticias(): Observable<any>{
     return this.http.get("http://localhost:3001/noticias");
   }
+
+  getNoticiasFavotias(correo: any): Observable<any>{
+    return this.http.get("http://localhost:3001/notifav/"+correo);
+  }
 }

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { NewsDBService } from '../news-db.service';
 import { UsuarioDBService } from '../usuario-db.service';
 
 @Component({
@@ -7,11 +11,19 @@ import { UsuarioDBService } from '../usuario-db.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  displayedColumns: string[] = ['idNoticia', 'correoUser', 'titulo','categoria','actions'];
+  dataList: MatTableDataSource<any> = new MatTableDataSource<any>();
+  @ViewChild(MatSort)
+  sort: MatSort = new MatSort();
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  searchKey: string = "";
 
   hide = true;
   wasFormChanged = false;
 
-  constructor(public usuarioDB: UsuarioDBService) { 
+
+
+  constructor(public usuarioDB: UsuarioDBService, public newsDB : NewsDBService) { 
   }
 
   onClear() {
@@ -32,6 +44,29 @@ export class ProfileComponent implements OnInit {
     this.usuarioDB.getUsuario(galleta).subscribe((usuario: any) => {
       this.onEdit(usuario);
     })
+
+    this.newsDB.getNoticiasFavotias(galleta).subscribe((notiFav: any[]) => {
+      this.dataList.data = notiFav;
+      this.dataList.sort = this.sort;
+      this.dataList.paginator = this.paginator ;
+    })
+    
+  }
+
+  deleteNoticia(id: string, correo: string): void {
+    $.ajax( {
+      url : "http://localhost:3001/notifav",
+      type : 'DELETE',
+      data: jQuery.param({"idNoticia": id, "correoUser": correo}),
+      success : function ( data ) {
+      $( "p" ).append( "Delete request is Success." );
+      window.location.reload();
+      },
+      error : function ( jqXhr, textStatus, errorMessage ) {
+      $( "p" ).append( "Delete request is Fail.");
+      }
+    });
+
   }
 
   async editarUsuario(){
@@ -69,6 +104,10 @@ export class ProfileComponent implements OnInit {
     }finally{
       location.reload();
     }
+  }
+
+  filtra(){
+    this.dataList.filter = this.searchKey.trim().toLowerCase();
   }
 
   onSubmit() {
