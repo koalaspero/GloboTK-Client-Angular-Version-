@@ -26,6 +26,7 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactoComponent },
     { path: 'profile', component: ProfileComponent },
+
     { path: 'home/news', redirectTo: '/news', pathMatch: 'full' },
     { path: 'home/about', redirectTo: '/about', pathMatch: 'full' },
     { path: 'home/contact', redirectTo: '/contact', pathMatch: 'full' },
@@ -44,18 +45,27 @@ const routes: Routes = [
     { path: 'news/contact', redirectTo: '/contact', pathMatch: 'full' },
     { path: 'news/profile', redirectTo: '/profile', pathMatch: 'full' },
     { path: 'news/news', redirectTo: '/news', pathMatch: 'full' },
+    
     { path: 'about/home', redirectTo: '/home', pathMatch: 'full' },
     { path: 'about/news', redirectTo: '/news', pathMatch: 'full' },
     { path: 'about/explore', redirectTo: '/explore', pathMatch: 'full' },
     { path: 'about/contact', redirectTo: '/contact', pathMatch: 'full' },
     { path: 'about/profile', redirectTo: '/profile', pathMatch: 'full' },
     { path: 'about/about', redirectTo: '/about', pathMatch: 'full' },
+
     { path: 'contact/home', redirectTo: '/home', pathMatch: 'full' },
     { path: 'contact/news', redirectTo: '/news', pathMatch: 'full' },
     { path: 'contact/about', redirectTo: '/about', pathMatch: 'full' },
     { path: 'contact/explore', redirectTo: '/explore', pathMatch: 'full' },
     { path: 'contact/profile', redirectTo: '/profile', pathMatch: 'full' },
     { path: 'contact/contact', redirectTo: '/contact', pathMatch: 'full' },
+
+    { path: 'profile/home', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'profile/news', redirectTo: '/news', pathMatch: 'full' },
+    { path: 'profile/about', redirectTo: '/about', pathMatch: 'full' },
+    { path: 'profile/explore', redirectTo: '/explore', pathMatch: 'full' },
+    { path: 'profile/profile', redirectTo: '/profile', pathMatch: 'full' },
+    { path: 'profile/contact', redirectTo: '/contact', pathMatch: 'full' },
 	
     { path: 'dashboard', component: DashboardComponent },
     { path: 'admUsers', component: AdminUsersComponent },
