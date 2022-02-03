@@ -1,1 +1,134 @@
-<p>profile still works!</p>
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="index.html">GloboTK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#" routerLink="home">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="" routerLink="explore">Explorar</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="" routerLink="news">Noticias</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="" routerLink="about">Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="" routerLink="contact">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="" routerLink="profile">Perfil</a></li>
+                <li class="nav-item"><button type="button" class="btn btn-light btn-circle btn-xl" onclick="cerrarSesion();"><i class="fas fa-sign-out-alt"></i></button></li>
+                <li class="nav-item"><button type="button" class="btn btn-light btn-circle btn-xl" onclick="introJs().setOption('showProgress',true).start();"><i class="fas fa-question"></i></button></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="masthead" style="background-image: url('assets/img/profile-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Tu Perfil</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div data-step="1" data-intro="Puedes editar tus datos" class="col-md-5 col-lg-8 col-xl-7">
+                <div>
+                    <div class="add-title">
+                      <span>{{usuarioDB.form.controls['$key'].value?"Editar Usuario":"Crear Usuario"}}</span>
+                      <h2 id="title" class="primary">Usuario</h2>
+                    </div>
+                    <div>
+                      <form [formGroup]="usuarioDB.form" (change)="formChanged()">
+                        <mat-grid-list cols="2" rowHeight="85px">
+                          <mat-grid-tile>
+                            <div class="text-inside">
+                              <input type="hidden" formControlName="$key">
+                              <mat-form-field>
+                                <input matInput id="nombre" placeholder="First Name" value="" formControlName="Nombre" required>
+                                <mat-error *ngIf="usuarioDB.form.controls['Nombre'].hasError('required')">
+                                  Por favor ingresa un nombre
+                                </mat-error>
+                                <mat-error *ngIf="usuarioDB.form.controls['Nombre'].hasError('pattern')">
+                                  Por favor ingresa un nombre
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </mat-grid-tile>
+                          <mat-grid-tile>
+                            <div class="text-inside">
+                              <mat-form-field class="example-full-width">
+                                <input matInput id="apellido" placeholder="Last Name" value="" formControlName="Apellido" required>
+                                <mat-error *ngIf="usuarioDB.form.controls['Apellido'].hasError('required')">
+                                  Por favor ingresa un apellido
+                                </mat-error>
+                                <mat-error *ngIf="usuarioDB.form.controls['Apellido'].hasError('pattern')">
+                                  Por favor ingresa un apellido
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </mat-grid-tile>
+                      
+                          <mat-grid-tile>
+                            <div class="text-inside">
+                              <mat-form-field>
+                                <input matInput id="fecha" [matDatepicker]="picker1" dateformat="y M d" placeholder="Date of birth" formControlName="fechaNacimiento">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                              </mat-form-field>
+                            </div>
+                          </mat-grid-tile>
+                          <mat-grid-tile>
+                            <div class="text-inside">
+                              <mat-form-field class="example-full-width">
+                                <input matInput id="email" placeholder="Email address" formControlName="Correo" readonly>
+                                <mat-error *ngIf="usuarioDB.form.controls['Correo'].hasError('required')">
+                                  Por favor ingresa un email id
+                                </mat-error>
+                                <mat-error *ngIf="usuarioDB.form.controls['Correo'].hasError('email')">
+                                  Por favor ingresa un email id valido
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </mat-grid-tile>
+                        
+                          <mat-grid-tile>
+                            <div class="text-inside">
+                              <mat-form-field class="example-full-width">
+                                <input matInput id="password" placeholder="contrasenia" [type]="hide ? 'password' : 'text'"  formControlName="Contrasenia" required>
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="usuarioDB.form.controls['Contrasenia'].hasError('required')">
+                                  Por favor ingresa una contraseña
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </mat-grid-tile>
+                
+                          <mat-grid-tile>
+                            <div class="text-inside">
+                              <mat-form-field class="example-full-width">
+                                <input matInput id="numero" placeholder="Numero de telefono" value='' formControlName="celular" required>
+                                <mat-error *ngIf="usuarioDB.form.controls['celular'].hasError('required')">
+                                  Por favor ingresa un numero
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </mat-grid-tile>                          
+                          
+                        </mat-grid-list>
+                
+                        <div class="btn-sec">
+                          <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="onSubmit()" [disabled]="usuarioDB.form.invalid">Guardar</button>                          
+                        </div>
+                  
+                      </form>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>
+
