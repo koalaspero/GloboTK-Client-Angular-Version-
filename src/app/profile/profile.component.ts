@@ -11,7 +11,7 @@ import { UsuarioDBService } from '../usuario-db.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  displayedColumns: string[] = ['idNoticia', 'correoUser', 'titulo','categoria','actions'];
+  displayedColumns: string[] = ['idNoticia','titulo','categoria','actions'];
   dataList: MatTableDataSource<any> = new MatTableDataSource<any>();
   @ViewChild(MatSort)
   sort: MatSort = new MatSort();

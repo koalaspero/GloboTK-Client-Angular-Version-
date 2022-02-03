@@ -132,7 +132,7 @@
         <div class="card mb-4">
           <div class="card-header">
               <i class="fas fa-table me-1"></i>
-              Reporte
+              Noticias favoritas
           </div>
           <div class="search-div">
             <mat-form-field class="search-form-field">
@@ -146,13 +146,8 @@
                   <td mat-cell *matCellDef="let element"> {{element.idNoticia}} </td>
               </ng-container>
 
-              <ng-container matColumnDef="correoUser">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Correo</th>
-                  <td mat-cell *matCellDef="let element"> {{element.correoUser}}</td>
-              </ng-container>
-
               <ng-container matColumnDef="titulo">
-                  <th mat-header-cell *matHeaderCellDef>Titulo</th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</th>
                   <td mat-cell *matCellDef="let element"> {{element.noticia.titulo}}</td>
               </ng-container>
 
