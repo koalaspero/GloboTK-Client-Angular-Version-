@@ -72,9 +72,10 @@
                           <mat-grid-tile>
                             <div class="text-inside">
                               <mat-form-field>
-                                <input matInput id="Fecha de Actualizacion" [matDatepicker]="picker1" dateformat="y M d" placeholder="Fecha de Actualizacion" formControlName="fechaActualizacion">
-                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                <mat-datepicker #picker1></mat-datepicker>
+                                <mat-select placeholder="Fecha de Actualizacion" formControlName="fechaActualizacion">
+                                  <mat-option>Selecciona</mat-option>
+                                  <mat-option *ngFor="let not of datesList" [value]="not.fechaActualizacion">{{not.fechaActualizacion}}</mat-option>
+                                </mat-select>
                               </mat-form-field>
                             </div>
                           </mat-grid-tile>
@@ -93,10 +94,13 @@
                         </mat-grid-list>
                 
                         <div class="btn-sec">
-                          <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="onSubmit()" [disabled]="reportDB.form.invalid">Guardar</button>
+                          <button mat-raised-button type="submit" color="primary" class="btn btn-success btn-bloc" (click)="onSubmit()" [disabled]="reportDB.form.invalid">Genera Reporte</button>
                         </div>
+
+                        <br>
                   
                       </form>
+                      
                 
                   <div class="card mb-4">
                     <div class="card-body">
@@ -108,6 +112,7 @@
                   </div>
                 </div>
                 <div class="col-12 col-lg-3 mb-3">
+                  
                 </div>
                 <div class="card mb-4">
                     <div class="card-header">

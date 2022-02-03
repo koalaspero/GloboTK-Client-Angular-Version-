@@ -16,7 +16,9 @@ export class AdminReportComponent implements OnInit {
   sort: MatSort = new MatSort();
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   searchKey: string = "";
-  public userList:{correoUser:string}[] = []
+  public userList:{correoUser:string,}[] = []
+  public datesList:{fechaActualizacion:string,}[] = []
+
 
 
   constructor(public reportDB: ReportDBService) { }
@@ -27,6 +29,11 @@ export class AdminReportComponent implements OnInit {
       .then(data => {
         this.userList = data; 
       })    
+    fetch("http://localhost:3001/reporte/dates")
+    .then(texto => texto.json())
+    .then(dates => {
+        this.datesList = dates; 
+    })    
   }
 
   filtra(){
